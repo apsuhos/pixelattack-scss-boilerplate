@@ -25,29 +25,31 @@ an absolute value. i.e.:
   @include font-size(24px, $modifier: -1);
 */
 
+/* stylelint-disable */
 @use 'sass:meta';
 @use 'sass:math';
 @use '../settings/index.settings' as s;
 
-/* stylelint-disable */
 @mixin font-size($font-size, $line-height: auto, $modifier: 0, $important: false) {
-  @if meta.type-of($font-size) == number {
-    @if math.unit($font-size != 'px') {
-      @error '`#{$font-size}` needs to be a pixel value.';
+  @if (meta.type-of($font-size) == number) {
+    @if (math.unit($font-size) != 'px') {
+      @error "`#{$font-size}` needs to be a pixel value.";
     }
   } @else {
-    @error '`#{$font-size}` needs to be a number.';
+    @error "`#{$font-size}` needs to be a number.";
   }
+
   @if ($important == true) {
     $important: !important;
   } @else if ($important == false) {
     $important: null;
   } @else {
-    @error '`#{$important}` needs to be `true` or `false`.';
+    @error "`#{$important}` needs to be `true` or `false`.";
   }
+
   font-size: math.div($font-size, s.$global-font-size) * 1rem $important;
 
-  @if $line-height == 'auto' {
+  @if ($line-height == 'auto') {
     // Define how many grid lines each text line should span.
     // By default, we set it to the minimum number of lines necessary
     // in order to contain the defined font-size, +1 for some breathing room.
@@ -57,16 +59,12 @@ an absolute value. i.e.:
 
     line-height: math.div($line-height, $font-size) $important;
   } @else {
-    @if meta.type-of($line-height) ==
-      number or
-      $line-height ==
-      'inherit' or
-      $line-height ==
-      'normal'
-    {
+    @if (
+      meta.type-of($line-height) == number or $line-height == 'inherit' or $line-height == 'normal'
+    ) {
       line-height: $line-height $important;
-    } @else if $line-height != 'none' and $line-height != false {
-      @error 'D’oh! `#{$line-height}` is not a valid value for `$line-height`.';
+    } @else if ($line-height != 'none' and $line-height != false) {
+      @error "D’oh! `#{$line-height}` is not a valid value for `$line-height`.";
     }
   }
 }
