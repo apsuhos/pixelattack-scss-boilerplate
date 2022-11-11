@@ -1,8 +1,16 @@
 {
   "name": "@pixelattack/pixelattack-scss-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SCSS boilerplate",
   "main": "main.scss",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apsuhos/pixelattack-scss-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apsuhos/pixelattack-scss-boilerplate/issues"
+  },
+  "homepage": "https://github.com/apsuhos/pixelattack-scss-boilerplate#readme",
   "scripts": {
     "test": "echo \"No test specified\"",
     "lint:check": "stylelint \"**/*.scss\"",
