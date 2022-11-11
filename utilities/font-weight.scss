@@ -1,0 +1,26 @@
+/* ==========================================================================
+   #FONT WEIGHT
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+
+$font-weight: (
+  'properties': (
+    '-font': font-weight
+  ),
+  'values': (
+    '-thin': 100,
+    '-extralight': 200,
+    '-light': 300,
+    '-normal': 400,
+    '-medium': 500,
+    '-semibold': 600,
+    '-bold': 700,
+    '-extrabold': 800,
+    '-black': 900
+  )
+) !default;
+
+@include t.generate-classes($font-weight);
+@include t.generate-responsive-classes($font-weight);

@@ -1,0 +1,23 @@
+/* ==========================================================================
+   #SPACING
+   ========================================================================== */
+
+// Function to assign spacings to elements.
+// .usage {
+//   margin-bottom: spacing(large);
+// }
+// Possible arguments for the function are defined in the
+// `$global-spacings` map in `_settings.core.scss`.
+
+@use 'sass:map';
+@use '../settings/core.scss' as c;
+
+@function spacing($spacing) {
+  $_factor: map.get(c.$global-spacings, $spacing);
+
+  @if not(map-has-key(c.$global-spacings, $spacing)) {
+    @error '`#{$spacing}` is not defined in the `$global-spacings` map. Only use spacings that are defined in that map.';
+  }
+
+  @return $_factor * c.$global-baseline;
+}

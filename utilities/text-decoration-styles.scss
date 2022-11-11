@@ -1,0 +1,22 @@
+/* ==========================================================================
+   #TEXT DECORATION STYLES
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+
+$text-decoration-style: (
+  'properties': (
+    '-decoration': text-decoration-style
+  ),
+  'values': (
+    '-solid': solid,
+    '-double': double,
+    '-dotted': dotted,
+    '-dashed': dashed,
+    '-wavy': wavy
+  )
+) !default;
+
+@include t.generate-classes($text-decoration-style);
+@include t.generate-responsive-classes($text-decoration-style);

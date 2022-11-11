@@ -1,0 +1,195 @@
+/* ==========================================================================
+   #FORM
+   ========================================================================== */
+
+@use '../settings/index.settings' as s;
+
+input::placeholder {
+  color: s.$input-placeholder-color;
+  opacity: 1;
+}
+
+textarea::placeholder {
+  color: s.$textarea-placeholder-color;
+  opacity: 1;
+}
+
+select {
+  background-image: url('/dist/images/chevron.svg');
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 18px;
+  padding-right: 24px;
+}
+
+[type='text'],
+[type='email'],
+[type='url'],
+[type='password'],
+[type='number'],
+[type='date'],
+[type='datetime-local'],
+[type='month'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='week'],
+[multiple],
+textarea,
+select {
+  appearance: none;
+  background-color: s.$input-background-color;
+  border-color: s.$input-border-color;
+  border-radius: s.$input-border-radius;
+  border-style: s.$input-border-style;
+  border-width: s.$input-border-width;
+  color: inherit;
+  font-weight: inherit;
+  padding: spacing(small);
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* stylelint-disable declaration-block-no-redundant-longhand-properties */
+[type='text']:focus,
+[type='email']:focus,
+[type='url']:focus,
+[type='password']:focus,
+[type='number']:focus,
+[type='date']:focus,
+[type='datetime-local']:focus,
+[type='month']:focus,
+[type='search']:focus,
+[type='tel']:focus,
+[type='time']:focus,
+[type='week']:focus,
+[multiple]:focus,
+textarea:focus,
+select:focus {
+  border-color: s.$input-focus-border-color;
+  outline-color: s.$input-outline-color;
+  outline-offset: s.$input-outline-offset;
+  outline-style: s.$input-outline-style;
+  outline-width: s.$input-outline-width;
+}
+
+[type='checkbox'],
+[type='radio'] {
+  appearance: none;
+  background-color: s.$checkbox-background-color;
+  border-color: s.$checkbox-border-color;
+  border-style: s.$checkbox-border-style;
+  border-width: s.$checkbox-border-width;
+  color: inherit;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 16px;
+  user-select: none;
+  vertical-align: middle;
+  width: 16px;
+}
+
+[type='checkbox'] {
+  border-radius: 0;
+}
+
+[type='radio'] {
+  border-radius: 100%;
+}
+
+[type='checkbox']:focus,
+[type='radio']:focus {
+  outline-color: s.$checkbox-focus-outline-color;
+  outline-offset: s.$checkbox-focus-offset;
+  outline-style: s.$checkbox-focus-outline-style;
+  outline-width: s.$checkbox-focus-outline-width;
+}
+/* stylelint-enable declaration-block-no-redundant-longhand-properties */
+
+[type='checkbox']:checked {
+  background-color: currentcolor;
+  background-image: url('/dist/images/checkbox-check.svg');
+  background-size: 100% 100%;
+  border-color: transparent;
+}
+
+[type='radio']:checked {
+  background-color: transparent;
+  background-image: url('/dist/images/radio-check.svg');
+  background-size: 50% 50%;
+  border-color: currentcolor;
+}
+
+[type='checkbox']:checked,
+[type='radio']:checked {
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+[type='checkbox']:checked:hover,
+[type='checkbox']:checked:focus {
+  background-color: currentcolor;
+  border-color: transparent;
+}
+
+[type='radio']:checked:hover,
+[type='radio']:checked:focus {
+  background-color: transparent;
+  border-color: currentcolor;
+}
+
+/*
+View source
+https://tailwindcss-forms.vercel.app/
+
+<div class="[ u-space-y-tiny ]">
+	<label for="firstname" class="[ u-block ]">First name</label>
+	<input type="text" id="firstname" class="[ u-1/1 ]">
+</div>
+<div class="[ u-space-y-tiny ]">
+	<label for="email" class="[ u-block ]">Email</label>
+	<input type="text" id="email" placeholder="john@example.com" class="[ u-1/1 ]">
+</div>
+<div class="u-space-tiny">
+	<select class="[ u-block ][ u-1/1 ]">
+		<option>Corporate event</option>
+		<option>Wedding</option>
+		<option>Birthday</option>
+		<option>Other</option>
+	</select>
+</div>
+
+<div class="[ u-space-y-tiny ]">
+	<label for="textarea" class="[ u-block ]">Your message</label>
+	<textarea id="textarea" rows="8" class="[ u-1/1 ]"></textarea>
+</div>
+
+<div class="[ u-flex u-space-x-tiny u-items-center ]">
+	<input id="checkbox" type="checkbox">
+	<label for="checkbox">Join our newsletter</label>
+</div>
+
+<a href="#" class="[ c-btn c-btn--primary c-btn--ghost ]">Hello</a>
+
+<fieldset>
+	<legend class="[ u-margin-bottom-tiny ]">Subscription method</legend>
+
+	<div class="[ u-flex u-flex-column u-gap-y-tiny ][ u-text-small ]">
+		<div class="[ u-flex u-gap-x-tiny ]">
+			<input type="radio" id="weekly" name="subscription">
+			<label for="weekly">Weekly</label>
+		</div>
+		<div class="[ u-flex u-gap-x-tiny ]">
+			<input type="radio" id="monthly" name="subscription">
+			<label for="monthly">Monthly</label>
+		</div>
+		<div class="[ u-flex u-gap-x-tiny ]">
+			<input type="radio" id="yearly" name="subscription">
+			<label for="yearly">Yearly</label>
+		</div>
+	</div>
+
+</fieldset>
+*/

@@ -1,0 +1,76 @@
+/* ==========================================================================
+   #GLOBALS
+   ========================================================================== */
+
+$global-radius: 2px !default;
+$global-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$global-transition-duration: 150ms !default;
+$global-outline-width: 2px !default;
+$global-outline-style: solid !default;
+$global-outline-offset: 1px !default;
+$global-outline-color: var(--color-interaction) !default;
+$global-form-background-color: transparent !default;
+$global-border-width: 2px !default;
+$global-border-style: solid !default;
+$global-border-color: var(--color-primary-060) !default;
+$global-placeholder-color: var(--color-neutral-050) !default;
+$global-fonts: ui-sans-serif, system-ui, -apple-system, blinkmacsystemfont, 'Segoe UI', roboto,
+  'Helvetica Neue', arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+  'Segoe UI Symbol', 'Noto Color Emoji' !default;
+
+// 16.000px @ 1.125
+$font-size-body-small: 14.222px !default; // .u-text-small
+$font-size-body-base: 16px !default;
+$font-size-body-large: 18px !default;
+$font-size-body-huge: 20.25px !default;
+$font-size-body-enormous: 22.781px !default; // .u-text-large
+
+// 18.000px * 1.96 = 35.280px @ 1.2 ↓
+$font-size-h1-base: 35.28px !default;
+$font-size-h2-base: 29.4px !default;
+$font-size-h3-base: 24.5px !default;
+$font-size-h4-base: 20.416px !default;
+$font-size-h5-base: 17.013px !default;
+$font-size-h6-base: 14.178px !default;
+
+// 20.250px * 1.96 = 39.690px @ 1.2 ↓
+$font-size-h1-large: 39.69px !default;
+$font-size-h2-large: 33.075px !default;
+$font-size-h3-large: 27.562px !default;
+$font-size-h4-large: 22.968px !default;
+$font-size-h5-large: 19.14px !default;
+$font-size-h6-large: 15.95px !default;
+
+// 22.781px * 1.96 = 44.650px @ 1.2 ↓
+$font-size-h1-huge: 44.65px !default;
+$font-size-h2-huge: 37.208px !default;
+$font-size-h3-huge: 31.007px !default;
+$font-size-h4-huge: 25.839px !default;
+$font-size-h5-huge: 21.532px !default;
+$font-size-h6-huge: 17.944px !default;
+
+// Inputs
+$input-background-color: $global-form-background-color !default;
+$input-border-color: $global-border-color !default;
+$input-border-width: $global-border-width !default;
+$input-border-style: $global-border-style !default;
+$input-border-radius: $global-radius !default;
+$input-focus-border-color: $global-border-color !default;
+$input-outline-width: $global-outline-width !default;
+$input-outline-style: $global-outline-style !default;
+$input-outline-color: $global-outline-color !default;
+$input-outline-offset: $global-outline-offset !default;
+$input-placeholder-color: $global-placeholder-color !default;
+
+// Textarea
+$textarea-placeholder-color: $global-placeholder-color !default;
+
+// Checkbox
+$checkbox-border-color: $global-border-color !default;
+$checkbox-border-width: $global-border-width !default;
+$checkbox-border-style: $global-border-style !default;
+$checkbox-background-color: $global-form-background-color !default;
+$checkbox-focus-outline-color: $global-outline-color !default;
+$checkbox-focus-outline-width: $global-outline-width !default;
+$checkbox-focus-outline-style: $global-outline-style !default;
+$checkbox-focus-offset: $global-outline-offset !default;

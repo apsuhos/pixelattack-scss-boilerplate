@@ -1,0 +1,13 @@
+/* ==========================================================================
+   #CLEARFIX
+   ========================================================================== */
+
+/**
+ * Attach our clearfix mixin to a utility class.
+ */
+
+@use '../tools/index.tools' as t;
+
+.u-clearfix {
+  @include t.clearfix;
+}

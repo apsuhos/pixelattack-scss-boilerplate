@@ -1,0 +1,19 @@
+/* ==========================================================================
+   #FLEX SHRINK
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+
+$flex-shrink: (
+  'properties': (
+    '-flex-shrink': flex-shrink
+  ),
+  'values': (
+    '-1': 1,
+    '-0': 0
+  )
+) !default;
+
+@include t.generate-classes($flex-shrink);
+@include t.generate-responsive-classes($flex-shrink);

@@ -1,0 +1,63 @@
+/* ==========================================================================
+   #FONT SIZE
+   ========================================================================== */
+
+@use '../settings/index.settings' as s;
+@use '../tools/index.tools' as t;
+@use '../../../node_modules/sass-mq/mq.import' as mq;
+
+/* stylelint-disable scss/operator-no-unspaced */
+.u-text-zero {
+  font-size: 0 !important;
+}
+
+@each $bp-name, $bp-value in mq.$mq-breakpoints {
+  @include mq.mq($from: $bp-name) {
+    .u-text-zero\@#{$bp-name} {
+      font-size: 0 !important;
+    }
+  }
+}
+
+.u-text-small {
+  @include t.font-size(s.$font-size-body-small, $important: true, $modifier: -1);
+
+  @if s.config(responsive-type) == true {
+    @include t.mq($from: l-tablet) {
+      @include t.font-size(s.$font-size-body-base, $important: true);
+    }
+
+    @include t.mq($from: l-wide) {
+      @include t.font-size(s.$font-size-body-large, $important: true);
+    }
+  }
+}
+
+.u-text-base {
+  @include t.font-size(s.$font-size-body-base, $important: true);
+
+  @if s.config(responsive-type) == true {
+    @include t.mq($from: l-tablet) {
+      @include t.font-size(s.$font-size-body-large, $important: true, $modifier: +1);
+    }
+
+    @include t.mq($from: l-wide) {
+      @include t.font-size(s.$font-size-body-huge, $important: true);
+    }
+  }
+}
+
+.u-text-large {
+  @include t.font-size(s.$font-size-body-large, $important: true);
+
+  @if s.config(responsive-type) == true {
+    @include t.mq($from: l-tablet) {
+      @include t.font-size(s.$font-size-body-huge, $important: true);
+    }
+
+    @include t.mq($from: l-wide) {
+      @include t.font-size(s.$font-size-body-enormous, $important: true);
+    }
+  }
+}
+/* stylelint-enable scss/operator-no-unspaced */

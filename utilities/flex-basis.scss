@@ -1,0 +1,46 @@
+/* ==========================================================================
+   #FLEX BASIS
+   ========================================================================== */
+
+@use 'sass:map';
+@use 'sass:math';
+@use '../settings/index.settings' as s;
+@use '../tools/index.tools' as t;
+
+$flex-basis: (
+  'properties': (
+    '-flex-basis': flex-basis
+  ),
+  'values': (
+    '-0': 0,
+    '-tiny': 6px,
+    '-small': 12px,
+    null: 24px,
+    '-large': 48px,
+    '-huge': 96px,
+    '-auto': auto,
+    '-full': 100%
+  )
+) !default;
+
+// Populate map with values
+$flex-basis-arithmetic-progress: ();
+$fb: 0;
+
+@while $fb <= (t.strip-unit(s.$global-baseline) * 5) {
+  $converted: t.rem($fb);
+  $flex-basis-arithmetic-progress: map.set(
+    $flex-basis-arithmetic-progress,
+    'values',
+    '-#{math.div($fb, t.strip-unit(s.$global-baseline))}',
+    $converted
+  );
+  $fb: $fb + t.strip-unit(s.$global-baseline);
+}
+
+$flex-basis: map.deep-merge($flex-basis, $flex-basis-arithmetic-progress);
+
+@include t.generate-percentage-classes($flex-basis, 1 2 3 4 5 6 12);
+@include t.generate-classes($flex-basis);
+@include t.generate-responsive-percentage-classes($flex-basis, 1 2 3 4 5 6 12);
+@include t.generate-responsive-classes($flex-basis);

@@ -1,0 +1,42 @@
+/* ==========================================================================
+   #ROTATE
+   ========================================================================== */
+
+@use '../tools/index.tools' as t;
+
+$rotate: (
+  'properties': (
+    '-rotate': rotate
+  ),
+  'values': (
+    '-0': 0,
+    '-1': 1,
+    '-2': 2,
+    '-3': 3,
+    '-6': 6,
+    '-12': 12,
+    '-45': 45,
+    '-90': 90,
+    '-180': 180
+  )
+) !default;
+
+@include t.generate-rotate-classes($rotate);
+@include t.generate-negative-rotate-classes($rotate);
+@include t.generate-hover-rotate-classes($rotate);
+@include t.generate-negative-hover-rotate-classes($rotate);
+@include t.generate-responsive-rotate-classes($rotate);
+@include t.generate-responsive-negative-rotate-classes($rotate);
+@include t.generate-responsive-hover-rotate-classes($rotate);
+@include t.generate-responsive-negative-hover-rotate-classes($rotate);
+
+/*
+    <a href="#" class="[ c-btn c-btn--primary ][ u-rotate-6 ]">u-rotate-6</a>
+    <a href="#" class="[ c-btn c-btn--primary ][ -u-rotate-6 ]">-u-rotate-6</a>
+    <a href="#" class="[ c-btn c-btn--primary ][ u-rotate-6@desktop ]">u-rotate-6@desktop</a>
+    <a href="#" class="[ c-btn c-btn--primary ][ -u-rotate-6@desktop ]">-u-rotate-6@desktop</a>
+    <a href="#" class="[ c-btn c-btn--primary ][ hover:u-rotate-6 ]">hover:u-rotate-6</a>
+    <a href="#" class="[ c-btn c-btn--primary ][ hover:-u-rotate-6 ]">hover:-u-rotate-6</a>
+    <a href="#" class="[ c-btn c-btn--primary ][ hover:u-rotate-6@desktop ]">hover:u-rotate-6@desktop</a>
+    <a href="#" class="[ c-btn c-btn--primary ][ hover:-u-rotate-6@desktop ]">hover:-u-rotate-6@desktop</a>
+*/

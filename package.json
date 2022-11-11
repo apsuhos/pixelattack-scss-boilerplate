@@ -1,0 +1,44 @@
+{
+  "name": "@pixelattack/pixelattack-scss-boilerplate",
+  "version": "1.0.0",
+  "description": "SCSS boilerplate",
+  "main": "main.scss",
+  "scripts": {
+    "test": "echo \"No test specified\"",
+    "lint:check": "stylelint \"**/*.scss\"",
+    "lint": "stylelint \"**/*.scss\" --fix",
+    "format:check": "prettier --check \"**/*.{scss,css}\"",
+    "format": "prettier --write \"**/*.{scss,css}\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{css,scss}": "npm run lint && npm run format"
+  },
+  "author": "Konstantinos Antoniadis",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "prettier": "2.7.1",
+    "stylelint": "^14.14.1",
+    "stylelint-config-prettier": "^9.0.4",
+    "stylelint-config-sass-guidelines": "^9.0.1",
+    "stylelint-config-standard-scss": "^6.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog",
+      "cz-conventional-commit": {
+        "maxSubjectLength": 72,
+        "bodyLineLength": 100,
+        "emoji": false
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

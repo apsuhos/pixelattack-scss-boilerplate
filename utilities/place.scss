@@ -1,0 +1,136 @@
+/* ==========================================================================
+   #PLACE
+   ========================================================================== */
+
+/*
+<div style="height: 500px; width: 500px; background-color: red; position: absolute;"
+    class=" [ u-top-1/4 u-left-12 u-left-0@desktop u-top-0@desktop ]">
+</div>
+*/
+
+/*
+https://codepen.io/apsuhos/pen/yLjWyjY
+*/
+
+@use '../../../node_modules/sass-mq/mq.import' as mq;
+@use 'sass:math';
+
+// How many pixel values do you need to go up to?
+$place-values: 12;
+
+// For the %s how many numerators do you need to go up to?
+// e.g u-top-1/4 etc.
+$place-columns: 1 2 3 4;
+$place-delimiter: \/;
+$place-properties: (
+  'top': 'top',
+  'right': 'right',
+  'bottom': 'bottom',
+  'left': 'left'
+) !default;
+
+/* #PLACE base values [ u-top-4 ] */
+
+@for $place-value from 0 through $place-values {
+  @each $place-property-namespace, $place-property in $place-properties {
+    .u-#{$place-property}-#{$place-value} {
+      #{$place-property}: #{$place-value}px !important;
+    }
+  }
+}
+
+/* #PLACE Negative values [ -u-right-4 ] */
+
+@for $place-value from 1 through $place-values {
+  // No need for 0
+  @each $place-property-namespace, $place-property in $place-properties {
+    .-u-#{$place-property}-#{$place-value} {
+      #{$place-property}: -#{$place-value}px !important;
+    }
+  }
+}
+
+/* #PLACE Percentage placement [ u-left-1/4 ] */
+
+@each $place-property-namespace, $place-property in $place-properties {
+  @each $place-denominator in $place-columns {
+    @for $place-numerator from 1 through $place-denominator {
+      .u-#{$place-property}-#{$place-numerator}#{$place-delimiter}#{$place-denominator} {
+        #{$place-property}: math.div($place-numerator, $place-denominator) * 100% !important;
+      }
+    }
+  }
+}
+
+/* #PLACE Negative percentage placement [ -u-bottom-2/3 ] */
+
+@each $place-property-namespace, $place-property in $place-properties {
+  @each $place-denominator in $place-columns {
+    @for $place-numerator from 1 through $place-denominator {
+      .-u-#{$place-property}-#{$place-numerator}#{$place-delimiter}#{$place-denominator} {
+        #{$place-property}: math.div($place-numerator, $place-denominator) * -100% !important;
+      }
+    }
+  }
+}
+
+/* #PLACE Responsive placement [ u-left-3@desktop ] */
+
+@each $bp-name, $bp-value in mq.$mq-breakpoints {
+  @for $place-value from 0 through $place-values {
+    @include mq.mq($from: $bp-name) {
+      @each $place-property-namespace, $place-property in $place-properties {
+        .u-#{$place-property}-#{$place-value}\@#{$bp-name} {
+          #{$place-property}: #{$place-value}px !important;
+        }
+      }
+    }
+  }
+}
+
+/* #PLACE Negative responsive placement [ -u-left-2@wide ] */
+
+@each $bp-name, $bp-value in mq.$mq-breakpoints {
+  @for $place-value from 1 through $place-values {
+    // No need for 0
+    @include mq.mq($from: $bp-name) {
+      @each $place-property-namespace, $place-property in $place-properties {
+        .-u-#{$place-property}-#{$place-value}\@#{$bp-name} {
+          #{$place-property}: -#{$place-value}px !important;
+        }
+      }
+    }
+  }
+}
+
+/* #PLACE Responsive percentage placement [ u-left-3/4@desktop ] */
+
+@each $bp-name, $bp-value in mq.$mq-breakpoints {
+  @include mq.mq($from: $bp-name) {
+    @each $place-property-namespace, $place-property in $place-properties {
+      @each $place-denominator in $place-columns {
+        @for $place-numerator from 1 through $place-denominator {
+          .u-#{$place-property}-#{$place-numerator}#{$place-delimiter}#{$place-denominator}\@#{$bp-name} {
+            #{$place-property}: math.div($place-numerator, $place-denominator) * 100% !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* #PLACE Negative responsive percentage placement [ -u-bottom-2/3@desktop ] */
+
+@each $bp-name, $bp-value in mq.$mq-breakpoints {
+  @include mq.mq($from: $bp-name) {
+    @each $place-property-namespace, $place-property in $place-properties {
+      @each $place-denominator in $place-columns {
+        @for $place-numerator from 1 through $place-denominator {
+          .-u-#{$place-property}-#{$place-numerator}#{$place-delimiter}#{$place-denominator}\@#{$bp-name} {
+            #{$place-property}: math.div($place-numerator, $place-denominator) * -100% !important;
+          }
+        }
+      }
+    }
+  }
+}

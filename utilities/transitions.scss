@@ -1,0 +1,40 @@
+/* ==========================================================================
+   #TRANSITIONS
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+
+$transition: (
+  'properties': (
+    '-transition': transition
+  ),
+  'values': (
+    '-none': 'none',
+    '-all': 'all',
+    '-colors': 'color, background-color, border-color, text-decoration-color, fill, stroke',
+    '-opacity': 'opacity',
+    '-box-shadow': 'box-shadow',
+    '-scale': 'scale',
+    '-rotate': 'rotate',
+    '-translate': 'translate'
+  )
+) !default;
+
+@include t.generate-transition-classes($transition);
+@include t.generate-responsive-transition-classes($transition);
+
+/*
+<div class="
+    [ u-bg-color-white-offset ]
+    [ u-border-style-solid u-border u-border-primary-030 ]
+    [ u-color-primary-060 ]
+    [ u-transition-all ]
+    [ hover:u-border-primary-060 ]
+    [ hover:u-scale-105@desktop ]
+    [ hover:-u-rotate-3@desktop ]
+    [ hover:u-color-error-030 ]
+    [ hover:u-bg-color-white ]">
+    Lorem ipsum dolor sit amet!
+</div>
+*/

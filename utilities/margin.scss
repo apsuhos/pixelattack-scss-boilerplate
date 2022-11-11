@@ -1,0 +1,50 @@
+/* ==========================================================================
+   #MARGIN
+   ========================================================================== */
+
+@use 'sass:map';
+@use 'sass:math';
+@use '../settings/index.settings' as s;
+@use '../tools/index.tools' as t;
+
+$margin: (
+  'properties': (
+    '-margin': margin
+  ),
+  'directions': (
+    null: null,
+    '-horizontal': '-left' '-right',
+    '-vertical': '-top' '-bottom',
+    '-top': '-top',
+    '-right': '-right',
+    '-bottom': '-bottom',
+    '-left': '-left'
+  ),
+  'values': (
+    '-none': 0,
+    '-tiny': t.rem(t.spacing(tiny)),
+    '-small': t.rem(t.spacing(small)),
+    null: t.rem(t.spacing(base)),
+    '-large': t.rem(t.spacing(large)),
+    '-huge': t.rem(t.spacing(huge)),
+    '-auto': auto
+  )
+) !default;
+$margin-arithmetic-progress: ();
+$m: 0;
+
+@while $m <= (t.strip-unit(s.$global-baseline) * 5) {
+  $converted: t.rem($m);
+  $margin-arithmetic-progress: map.set(
+    $margin-arithmetic-progress,
+    'values',
+    '-#{math.div($m, t.strip-unit(s.$global-baseline))}',
+    $converted
+  );
+  $m: $m + t.strip-unit(s.$global-baseline);
+}
+
+$margin: map.deep-merge($margin, $margin-arithmetic-progress);
+
+@include t.generate-classes($margin);
+@include t.generate-responsive-classes($margin);

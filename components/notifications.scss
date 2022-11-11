@@ -1,0 +1,74 @@
+/* ========================================================================
+   #NOTIFICATIONS
+   ======================================================================== */
+
+@use '../settings/index.settings' as s;
+@use '../tools/index.tools' as t;
+
+$notification-border-width: s.$global-border-width !default;
+$notification-border-style: s.$global-border-style !default;
+$notification-padding: t.spacing(small) !default;
+$notification-small-padding: t.spacing(tiny) !default;
+$notification-large-padding: t.spacing(base) !default;
+
+.c-notification--error {
+  --background: var(--color-error-010);
+  --border: var(--color-error-020);
+  --text-color: var(--color-error-030);
+}
+
+.c-notification--success {
+  --background: var(--color-success-010);
+  --border: var(--color-success-020);
+  --text-color: var(--color-success-030);
+}
+
+.c-notification--warning {
+  --background: var(--color-warning-010);
+  --border: var(--color-warning-020);
+  --text-color: var(--color-warning-030);
+}
+
+.c-notification--info {
+  --background: var(--color-info-010);
+  --border: var(--color-info-020);
+  --text-color: var(--color-info-030);
+}
+
+.c-notification {
+  background-color: var(--background);
+  border: s.$global-border-width solid;
+  border-color: var(--border);
+  color: var(--text-color);
+  padding: $notification-padding;
+
+  /* stylelint-disable max-nesting-depth */
+  > * {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  /* stylelint-enable max-nesting-depth */
+}
+
+.c-notification--small {
+  padding: $notification-small-padding;
+}
+
+.c-notification--large {
+  padding: $notification-large-padding;
+}
+
+/*
+<div class="[ c-notification c-notification--warning ]">
+    <div class="[ o-media o-media--middle ]">
+        // The classes overwrite the attributes
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="height: 36px;" class="[ o-media__img ][ u-transition-colors ][ u-stroke-primary-060 u-stroke-2 hover:u-stroke-primary-100 ]">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+        </svg>
+        <div class="[ o-media__body ]">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, culpa iste et expedita, molestiae dolor dignissimos quos repellendus tempora non laborum voluptatibus! Totam facere excepturi voluptas ipsa. Asperiores, minima rerum?</p>
+        </div>
+    </div>
+</div>
+*/

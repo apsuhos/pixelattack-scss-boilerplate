@@ -1,0 +1,27 @@
+/* ==========================================================================
+   #FILL
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+@use '../utilities/colors.scss' as colors;
+
+// Remove keys that are referenced in $colors map @ utilities/colors.scss
+// Replaced the property
+$fill: (
+  'properties': (
+    '-fill': fill
+  )
+);
+
+// Merge with the $colors map @ utilities/colors.scss
+$fill: t.map-collect(colors.$colors, $fill);
+
+@include t.generate-keyword-color-rules($fill);
+@include t.generate-standard-color-rules($fill);
+@include t.generate-notification-color-rules($fill);
+@include t.generate-brand-color-rules($fill);
+@include t.generate-hover-keyword-color-rules($fill);
+@include t.generate-hover-standard-color-rules($fill);
+@include t.generate-hover-notification-color-rules($fill);
+@include t.generate-hover-brand-color-rules($fill);

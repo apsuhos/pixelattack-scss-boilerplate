@@ -1,0 +1,21 @@
+/* ==========================================================================
+   #TEXT DECORATION
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+
+$text-decoration: (
+  'properties': (
+    '-decoration': text-decoration-line
+  ),
+  'values': (
+    '-underline': underline,
+    '-overline': overline,
+    '-line-through': line-through,
+    '-no-underline': no-underline
+  )
+) !default;
+
+@include t.generate-classes($text-decoration);
+@include t.generate-responsive-classes($text-decoration);

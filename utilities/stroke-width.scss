@@ -1,0 +1,20 @@
+/* ==========================================================================
+   #STROKE WIDTH
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+
+$stroke-width: (
+  'properties': (
+    '-stroke': stroke-width
+  ),
+  'values': (
+    '-0': 0,
+    '-1': 1,
+    '-2': 2
+  )
+) !default;
+
+@include t.generate-classes($stroke-width);
+@include t.generate-responsive-classes($stroke-width);

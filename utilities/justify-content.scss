@@ -1,0 +1,22 @@
+/* ==========================================================================
+   #JUSTIFY CONTENT
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+
+$justify-content: (
+  'properties': (
+    '-justify': justify-content
+  ),
+  'values': (
+    '-start': flex-start,
+    '-center': center,
+    '-end': flex-end,
+    '-between': space-between,
+    '-around': space-around
+  )
+) !default;
+
+@include t.generate-classes($justify-content);
+@include t.generate-responsive-classes($justify-content);

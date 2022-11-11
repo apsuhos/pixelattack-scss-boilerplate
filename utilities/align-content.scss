@@ -1,0 +1,24 @@
+/* ==========================================================================
+   #ALIGN CONTENT
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+
+$align-content: (
+  'properties': (
+    '-content': align-content
+  ),
+  'values': (
+    '-center': center,
+    '-start': flex-start,
+    '-end': flex-end,
+    '-between': space-between,
+    '-around': space-around,
+    '-evenly': space-evenly,
+    '-baseline': baseline
+  )
+) !default;
+
+@include t.generate-classes($align-content);
+@include t.generate-responsive-classes($align-content);

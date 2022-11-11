@@ -1,0 +1,36 @@
+/* ===========================================================================
+    #LINKS
+=========================================================================== */
+
+@use '../settings/index.settings' as s;
+
+$link-transition-timing-function: s.$global-transition-timing-function !default;
+$link-transition-duration: s.$global-transition-duration !default;
+$link-outline-width: s.$global-outline-width !default;
+$link-outline-style: s.$global-outline-style !default;
+$link-outline-offset: s.$global-outline-offset !default;
+$link-outline-color: s.$global-outline-color !default;
+
+/* stylelint-disable no-eol-whitespace */
+a {
+  --link-color: var(--color-primary-060);
+  --link-color-hover: var(--color-primary-100);
+
+  color: var(--link-color);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+  transition: all $link-transition-duration $link-transition-timing-function;
+}
+/* stylelint-enable no-eol-whitespace */
+
+a:hover,
+a:focus {
+  color: var(--link-color-hover);
+  text-decoration-thickness: 3px;
+}
+
+a:focus {
+  outline: $link-outline-width $link-outline-style $link-outline-color;
+  outline-offset: $link-outline-offset;
+}

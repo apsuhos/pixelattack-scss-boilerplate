@@ -1,0 +1,43 @@
+/* ==========================================================================
+   #COLORS
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+
+$colors: (
+  'properties': (
+    '-color': color
+  ),
+  'keywords': (
+    '-none': none,
+    '-inherit': inherit,
+    '-current': currentcolor,
+    '-transparent': transparent
+  ),
+  'standard': (
+    '-white': '--color-white',
+    '-white-offset': '--color-white-offset',
+    '-black': '--color-black',
+    '-black-offset': '--color-black-offset'
+  ),
+  'notifications': (
+    '-error': '--color-error',
+    '-success': '--color-success',
+    '-warning': '--color-warning',
+    '-info': '--color-info'
+  ),
+  'brand': (
+    '-neutral': '--color-neutral',
+    '-primary': '--color-primary'
+  )
+) !default;
+
+@include t.generate-keyword-color-rules($colors);
+@include t.generate-standard-color-rules($colors);
+@include t.generate-notification-color-rules($colors);
+@include t.generate-brand-color-rules($colors);
+@include t.generate-hover-keyword-color-rules($colors);
+@include t.generate-hover-standard-color-rules($colors);
+@include t.generate-hover-notification-color-rules($colors);
+@include t.generate-hover-brand-color-rules($colors);

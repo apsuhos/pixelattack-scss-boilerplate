@@ -1,0 +1,36 @@
+/* ==========================================================================
+   #BORDER COLORS
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+@use '../utilities/colors.scss' as colors;
+
+// Remove keys that are referenced in $colors map @ utilities/colors.scss
+// Replaced the property and removed the -none keyword namespace key
+$border-colors: (
+  'properties': (
+    '-border': border-color,
+    '-border-top': border-top-color,
+    '-border-right': border-right-color,
+    '-border-bottom': border-bottom-color,
+    '-border-left': border-left-color
+  ),
+  'keywords': (
+    '-inherit': inherit,
+    '-current': currentcolor,
+    '-transparent': transparent
+  )
+) !default;
+
+// Merge with the $colors map @ utilities/colors.scss
+$border-colors: t.map-collect(colors.$colors, $border-colors);
+
+@include t.generate-keyword-color-rules($border-colors);
+@include t.generate-standard-color-rules($border-colors);
+@include t.generate-notification-color-rules($border-colors);
+@include t.generate-brand-color-rules($border-colors);
+@include t.generate-hover-keyword-color-rules($border-colors);
+@include t.generate-hover-standard-color-rules($border-colors);
+@include t.generate-hover-notification-color-rules($border-colors);
+@include t.generate-hover-brand-color-rules($border-colors);

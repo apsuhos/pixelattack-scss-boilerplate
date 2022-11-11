@@ -1,0 +1,604 @@
+/* ==========================================================================
+   #GENERATE CLASSES
+   ========================================================================== */
+
+@use 'sass:map';
+@use 'sass:math';
+@use '../settings/index.settings' as s;
+@use '../../../node_modules/sass-mq/mq.import' as mq;
+
+/*
+Generates classes for the majority of the CSS properties.
+All of them need to have at least the `properties` and the
+`values` keys.
+
+If the property requires the direction keys it uses them,
+if not it just bypasses them.
+*/
+
+@mixin generate-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $directions: 'directions',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $direction-namespace, $direction-rules in map.get($map, $directions) {
+      @each $value-namespace, $value in map.get($map, $values) {
+        .u#{$property-namespace}#{$direction-namespace}#{$value-namespace}#{$breakpoint} {
+          @each $direction in $direction-rules {
+            #{$property}#{$direction}: #{$value} !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-responsive-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+@mixin generate-hover-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $directions: 'directions',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $direction-namespace, $direction-rules in map.get($map, $directions) {
+      @each $value-namespace, $value in map.get($map, $values) {
+        .hover\:u#{$property-namespace}#{$direction-namespace}#{$value-namespace}#{$breakpoint}:hover {
+          @each $direction in $direction-rules {
+            #{$property}#{$direction}: #{$value} !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-responsive-hover-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-hover-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+@mixin generate-percentage-classes(
+  $map,
+  $columns: 1 2 3 4 5 6,
+  $breakpoint: null,
+  $properties: 'properties'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $denominator in $columns {
+      @for $numerator from 1 through $denominator {
+        .u#{$property-namespace}-#{$numerator}\/#{$denominator}#{$breakpoint} {
+          #{$property}: math.div($numerator, $denominator) * 100% !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-responsive-percentage-classes($map, $columns: 1 2 3 4 5 6) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-percentage-classes($map, $columns, \@#{$bp-name});
+    }
+  }
+}
+
+// Generate classes for the space utility
+@mixin generate-space-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $directions: 'directions',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $direction-namespace, $direction-rules in map.get($map, $directions) {
+      @each $value-namespace, $value in map.get($map, $values) {
+        .u#{$property-namespace}#{$direction-namespace}#{$value-namespace}#{$breakpoint} > * + * {
+          @each $direction in $direction-rules {
+            #{$property}#{$direction}: #{$value} !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-space-responsive-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-space-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+// Generates classes for the scale property.
+@mixin generate-scale-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $value-namespace, $value in map.get($map, $values) {
+      .u#{$property-namespace}#{$value-namespace}#{$breakpoint} {
+        @if #{$property-namespace} == '-scale' {
+          #{$property}: #{$value} !important;
+        }
+
+        @if #{$property-namespace} == '-scale-x' {
+          #{$property}: #{$value} 1 !important;
+        }
+
+        @if #{$property-namespace} == '-scale-y' {
+          #{$property}: 1 #{$value} !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-hover-scale-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $value-namespace, $value in map.get($map, $values) {
+      .hover\:u#{$property-namespace}#{$value-namespace}#{$breakpoint}:hover {
+        @if #{$property-namespace} == '-scale' {
+          #{$property}: #{$value} !important;
+        }
+
+        @if #{$property-namespace} == '-scale-x' {
+          #{$property}: #{$value} 1 !important;
+        }
+
+        @if #{$property-namespace} == '-scale-y' {
+          #{$property}: 1 #{$value} !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-responsive-scale-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-scale-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+@mixin generate-responsive-hover-scale-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-hover-scale-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+// Generates classes for the translate property
+@mixin generate-translate-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $value-namespace, $value in map.get($map, $values) {
+      .u#{$property-namespace}#{$value-namespace}#{$breakpoint} {
+        @if #{$property-namespace} == '-translate' {
+          #{$property}: #{$value} !important;
+        }
+
+        @if #{$property-namespace} == '-translate-x' {
+          #{$property}: #{$value} 0 !important;
+        }
+
+        @if #{$property-namespace} == '-translate-y' {
+          #{$property}: 0 #{$value} !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-negative-translate-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $value-namespace, $value in map.get($map, $values) {
+      .-u#{$property-namespace}#{$value-namespace}#{$breakpoint} {
+        @if #{$property-namespace} == '-translate' {
+          #{$property}: -#{$value} !important;
+        }
+
+        @if #{$property-namespace} == '-translate-x' {
+          #{$property}: -#{$value} 0 !important;
+        }
+
+        @if #{$property-namespace} == '-translate-y' {
+          #{$property}: 0 -#{$value} !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-hover-translate-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $value-namespace, $value in map.get($map, $values) {
+      .hover\:u#{$property-namespace}#{$value-namespace}#{$breakpoint}:hover {
+        @if #{$property-namespace} == '-translate' {
+          #{$property}: #{$value} !important;
+        }
+
+        @if #{$property-namespace} == '-translate-x' {
+          #{$property}: #{$value} 0 !important;
+        }
+
+        @if #{$property-namespace} == '-translate-y' {
+          #{$property}: 0 #{$value} !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-negative-hover-translate-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $value-namespace, $value in map.get($map, $values) {
+      .hover\:-u#{$property-namespace}#{$value-namespace}#{$breakpoint}:hover {
+        @if #{$property-namespace} == '-translate' {
+          #{$property}: -#{$value} !important;
+        }
+
+        @if #{$property-namespace} == '-translate-x' {
+          #{$property}: -#{$value} 0 !important;
+        }
+
+        @if #{$property-namespace} == '-translate-y' {
+          #{$property}: 0 -#{$value} !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-responsive-translate-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-translate-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+@mixin generate-responsive-negative-translate-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-negative-translate-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+@mixin generate-responsive-hover-translate-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-hover-translate-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+@mixin generate-responsive-negative-hover-translate-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-negative-hover-translate-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+// Generate classes for the rotate property
+@mixin generate-rotate-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $value-namespace, $value in map.get($map, $values) {
+      .u#{$property-namespace}#{$value-namespace}#{$breakpoint} {
+        #{$property}: #{$value}deg !important;
+      }
+    }
+  }
+}
+
+@mixin generate-negative-rotate-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $value-namespace, $value in map.get($map, $values) {
+      .-u#{$property-namespace}#{$value-namespace}#{$breakpoint} {
+        @if $value > 0 {
+          #{$property}: -#{$value}deg !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-hover-rotate-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $value-namespace, $value in map.get($map, $values) {
+      .hover\:u#{$property-namespace}#{$value-namespace}#{$breakpoint}:hover {
+        #{$property}: #{$value}deg !important;
+      }
+    }
+  }
+}
+
+@mixin generate-negative-hover-rotate-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $value-namespace, $value in map.get($map, $values) {
+      .hover\:-u#{$property-namespace}#{$value-namespace}#{$breakpoint}:hover {
+        @if $value > 0 {
+          #{$property}: -#{$value}deg !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-responsive-rotate-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-rotate-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+@mixin generate-responsive-negative-rotate-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-negative-rotate-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+@mixin generate-responsive-hover-rotate-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-hover-rotate-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+@mixin generate-responsive-negative-hover-rotate-classes($map) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-negative-hover-rotate-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+// Generate classes for the transition property
+@mixin generate-transition-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $directions: 'directions',
+  $values: 'values'
+) {
+  @each $property-namespace, $property in map.get($map, $properties) {
+    @each $direction-namespace, $direction-rules in map.get($map, $directions) {
+      @each $value-namespace, $value in map.get($map, $values) {
+        @if $value-namespace == '-none' {
+          .u#{$property-namespace}#{$direction-namespace}#{$value-namespace}#{$breakpoint} {
+            transition-property: #{$value} !important;
+          }
+        } @else {
+          .u#{$property-namespace}#{$direction-namespace}#{$value-namespace}#{$breakpoint} {
+            transition-duration: s.$global-transition-duration !important;
+            transition-property: #{$value} !important;
+            transition-timing-function: s.$global-transition-timing-function !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-responsive-transition-classes(
+  $map,
+  $breakpoint: null,
+  $properties: 'properties',
+  $directions: 'directions',
+  $values: 'values'
+) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-transition-classes($map, \@#{$bp-name});
+    }
+  }
+}
+
+// Generate classes for offsets
+@mixin generate-offsets($columns-class, $breakpoint: null) {
+  @each $denominator in $columns-class {
+    @for $numerator from 1 through $denominator {
+      .u-push-#{$numerator}\/#{$denominator}#{$breakpoint} {
+        left: math.div($numerator, $denominator) * 100% !important;
+        position: relative !important;
+        right: auto !important;
+      }
+      .u-pull-#{$numerator}\/#{$denominator}#{$breakpoint} {
+        left: auto !important;
+        position: relative !important;
+        right: math.div($numerator, $denominator) * 100% !important;
+      }
+    }
+  }
+  .u-push-none#{$breakpoint} {
+    left: auto !important;
+  }
+
+  .u-pull-none#{$breakpoint} {
+    right: auto !important;
+  }
+}
+
+// Generate responsive classes for offsets
+@mixin generate-responsive-offsets($columns-class) {
+  @each $bp-name, $bp-value in mq.$mq-breakpoints {
+    @include mq.mq($from: $bp-name) {
+      @include generate-offsets($columns-class, \@#{$bp-name});
+    }
+  }
+}
+
+// Color mixins
+@mixin generate-keyword-color-rules($map) {
+  @each $property-namespace, $property in map.get($map, 'properties') {
+    @each $value-namespace, $value in map.get($map, 'keywords') {
+      .u#{$property-namespace}#{$value-namespace} {
+        #{$property}: #{$value} !important;
+      }
+    }
+  }
+}
+
+@mixin generate-standard-color-rules($map) {
+  @each $property-namespace, $property in map.get($map, 'properties') {
+    @each $value-namespace, $value in map.get($map, 'standard') {
+      .u#{$property-namespace}#{$value-namespace} {
+        #{$property}: var(#{$value}) !important;
+      }
+    }
+  }
+}
+
+@mixin generate-notification-color-rules($map) {
+  @each $property-namespace, $property in map.get($map, 'properties') {
+    @each $value-namespace, $value in map.get($map, 'notifications') {
+      @for $numerator from 1 through 3 {
+        .u#{$property-namespace}#{$value-namespace}-0#{$numerator}0 {
+          #{$property}: var(#{$value}-0#{$numerator}0) !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-brand-color-rules($map) {
+  @each $property-namespace, $property in map.get($map, 'properties') {
+    @each $value-namespace, $value in map.get($map, 'brand') {
+      @for $numerator from 1 through 10 {
+        @if $numerator < 10 {
+          .u#{$property-namespace}#{$value-namespace}-0#{$numerator}0 {
+            #{$property}: var(#{$value}-0#{$numerator}0) !important;
+          }
+        }
+
+        @if $numerator == 10 {
+          .u#{$property-namespace}#{$value-namespace}-#{$numerator}0 {
+            #{$property}: var(#{$value}-#{$numerator}0) !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-hover-keyword-color-rules($map) {
+  @each $property-namespace, $property in map.get($map, 'properties') {
+    @each $value-namespace, $value in map.get($map, 'keywords') {
+      .hover\:u#{$property-namespace}#{$value-namespace}:hover {
+        #{$property}: #{$value} !important;
+      }
+    }
+  }
+}
+
+@mixin generate-hover-standard-color-rules($map) {
+  @each $property-namespace, $property in map.get($map, 'properties') {
+    @each $value-namespace, $value in map.get($map, 'standard') {
+      .hover\:u#{$property-namespace}#{$value-namespace}:hover {
+        #{$property}: var(#{$value}) !important;
+      }
+    }
+  }
+}
+
+@mixin generate-hover-notification-color-rules($map) {
+  @each $property-namespace, $property in map.get($map, 'properties') {
+    @each $value-namespace, $value in map.get($map, 'notifications') {
+      @for $numerator from 1 through 3 {
+        .hover\:u#{$property-namespace}#{$value-namespace}-0#{$numerator}0:hover {
+          #{$property}: var(#{$value}-0#{$numerator}0) !important;
+        }
+      }
+    }
+  }
+}
+
+@mixin generate-hover-brand-color-rules($map) {
+  @each $property-namespace, $property in map.get($map, 'properties') {
+    @each $value-namespace, $value in map.get($map, 'brand') {
+      @for $numerator from 1 through 10 {
+        @if $numerator < 10 {
+          .hover\:u#{$property-namespace}#{$value-namespace}-0#{$numerator}0:hover {
+            #{$property}: var(#{$value}-0#{$numerator}0) !important;
+          }
+        }
+
+        @if $numerator == 10 {
+          .hover\:u#{$property-namespace}#{$value-namespace}-#{$numerator}0:hover {
+            #{$property}: var(#{$value}-#{$numerator}0) !important;
+          }
+        }
+      }
+    }
+  }
+}

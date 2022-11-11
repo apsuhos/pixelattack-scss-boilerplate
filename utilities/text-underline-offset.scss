@@ -1,0 +1,23 @@
+/* ==========================================================================
+   #TEXT UNDERLINE OFFSET
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/index.tools' as t;
+
+$text-underline-offset: (
+  'properties': (
+    '-underline-offset': text-underline-offset
+  ),
+  'values': (
+    '-auto': auto,
+    '-0': 0,
+    '-1': 1px,
+    '-2': 2px,
+    '-4': 4px,
+    '-8': 8px
+  )
+) !default;
+
+@include t.generate-classes($text-underline-offset);
+@include t.generate-responsive-classes($text-underline-offset);
