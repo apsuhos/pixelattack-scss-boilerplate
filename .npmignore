@@ -8,5 +8,6 @@ node_modules
 .stylelintignore
 .stylelintrc.json
 TODO
+INSTRUCTIONS.md
 commitlint.config.js
 package-lock.json
