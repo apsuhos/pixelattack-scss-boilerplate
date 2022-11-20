@@ -1,9 +1,4 @@
-@forward './config' with (
-  $config: (
-    env: dev,
-    responsive-type: false
-  )
-);
+@forward './config';
 @forward './core';
 @forward './colors';
 @forward './globals';

@@ -4,7 +4,7 @@
 
 @use 'sass:map';
 @use '../tools/index.tools' as t;
-@use '../utilities/colors.scss' as colors;
+@use '../utilities/colors-util.scss' as colors;
 
 // Remove keys that are referenced in $colors map @ utilities/colors.scss
 // Replaced the property and removed the -none keyword namespace key

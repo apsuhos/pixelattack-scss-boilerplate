@@ -5,7 +5,7 @@
 @use 'sass:map';
 @use 'sass:math';
 @use '../settings/index.settings' as s;
-@use '../../../sass-mq/mq.import' as mq;
+@use '../node_modules/sass-mq/mq.import' as mq;
 
 /*
 Generates classes for the majority of the CSS properties.

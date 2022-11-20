@@ -4,7 +4,7 @@
 
 @use 'sass:map';
 @use '../tools/index.tools' as t;
-@use '../../../sass-mq/mq.import' as mq;
+@use '../node_modules/sass-mq/mq.import' as mq;
 
 $wrapper-width: map.get(mq.$mq-breakpoints, l-desktop) !default;
 $wrapper-full-width: map.get(mq.$mq-breakpoints, l-wide) !default;

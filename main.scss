@@ -1,7 +1,117 @@
-@use './settings/index.settings' as s;
-@use './tools/index.tools' as t;
-@use './generic/index.generic' as g;
-@use './elements/index.elements' as e;
-@use './objects/index.objects' as o;
-@use './components/index.components' as c;
-@use './utilities/index.utilities' as u;
+// SETTINGS
+@use './settings/config';
+@use './settings/core';
+@use './settings/colors';
+@use './settings/globals';
+
+// TOOLS
+@use './node_modules/sass-mq/mq';
+@use './tools/font-size';
+@use './tools/rem';
+@use './tools/clearfix';
+@use './tools/hidden';
+@use './tools/spacing';
+@use './tools/maps';
+@use './tools/generate-classes.scss';
+
+// GENERIC
+@use './generic/box-sizing';
+@use './node_modules/normalize.css/normalize';
+@use './generic/reset';
+@use './generic/shared';
+
+// ELEMENTS
+@use './elements/page';
+@use './elements/headings';
+@use './elements/form';
+@use './elements/tables';
+@use './elements/links';
+
+// OBJECTS
+@use './objects/wrapper';
+@use './objects/grid';
+@use './objects/media';
+@use './objects/list-bare';
+@use './objects/list-inline';
+@use './objects/box';
+@use './objects/table';
+
+// COMPONENTS
+@use './components/buttons';
+@use './components/notifications';
+
+// UTILITIES
+// [Layout]
+@use './utilities/display';
+@use './utilities/position';
+@use './utilities/place';
+@use './utilities/offsets';
+
+// [Spacing]
+@use './utilities/space';
+@use './utilities/padding';
+@use './utilities/margin';
+
+// [Sizing]
+@use './utilities/width';
+
+// [Colors]
+@use './utilities/colors-util';
+
+// [Backgrounds]
+@use './utilities/background-colors';
+
+// [Typography]
+@use './utilities/headings-util';
+@use './utilities/font-size-util';
+@use './utilities/text-align';
+@use './utilities/text-transform';
+@use './utilities/font-weight';
+@use './utilities/letter-spacing';
+@use './utilities/list-style-type';
+@use './utilities/text-decoration';
+@use './utilities/text-decoration-colors';
+@use './utilities/text-decoration-styles';
+@use './utilities/text-decoration-thickness';
+@use './utilities/text-underline-offset';
+
+// [Borders]
+@use './utilities/border-radius';
+@use './utilities/border-width';
+@use './utilities/border-style';
+@use './utilities/border-colors';
+
+// [Flexbox]
+@use './utilities/flex-basis';
+@use './utilities/flex-grow';
+@use './utilities/flex-shrink';
+@use './utilities/flex-direction';
+@use './utilities/flex-wrap';
+@use './utilities/order';
+@use './utilities/gap';
+@use './utilities/justify-content';
+@use './utilities/align-items';
+@use './utilities/align-content';
+@use './utilities/align-self';
+
+// [Effects]
+@use './utilities/box-shadow';
+@use './utilities/opacity';
+
+// [Transitions]
+@use './utilities/transitions';
+
+// [Transforms]
+@use './utilities/scale';
+@use './utilities/rotate';
+@use './utilities/translate';
+
+// [SVG]
+@use './utilities/fill';
+@use './utilities/stroke';
+@use './utilities/stroke-width';
+
+// [Helpers]
+@use './utilities/hide';
+@use './utilities/clearfix-util';
+@use './utilities/print';
