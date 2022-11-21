@@ -3,8 +3,8 @@
    ========================================================================== */
 
 @use 'sass:map';
-@use '../tools/index.tools' as t;
-@use '../node_modules/sass-mq/mq.import' as mq;
+@use '../tools/clearfix.scss' as t;
+@use '../tools/mq' as mq;
 
 $wrapper-width: map.get(mq.$mq-breakpoints, l-desktop) !default;
 $wrapper-full-width: map.get(mq.$mq-breakpoints, l-wide) !default;

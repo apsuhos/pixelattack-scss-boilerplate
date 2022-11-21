@@ -4,7 +4,7 @@
 
 @use '../settings/index.settings' as s;
 @use '../tools/index.tools' as t;
-@use '../node_modules/sass-mq/mq.import' as mq;
+@use '../tools/mq' as mq;
 
 /* stylelint-disable scss/operator-no-unspaced */
 .u-text-zero {

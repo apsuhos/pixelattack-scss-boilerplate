@@ -5,18 +5,18 @@
 @use './settings/globals';
 
 // TOOLS
-@use './node_modules/sass-mq/mq';
+@use './tools/mq';
 @use './tools/font-size';
 @use './tools/rem';
 @use './tools/clearfix';
 @use './tools/hidden';
 @use './tools/spacing';
 @use './tools/maps';
-@use './tools/generate-classes.scss';
+@use './tools/generate-classes';
 
 // GENERIC
 @use './generic/box-sizing';
-@use './node_modules/normalize.css/normalize';
+@use './generic/normalize';
 @use './generic/reset';
 @use './generic/shared';
 

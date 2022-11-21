@@ -1,8 +1,8 @@
-@forward '../node_modules/sass-mq/mq';
+@forward './mq';
 @forward './font-size';
 @forward './rem';
 @forward './clearfix';
 @forward './hidden';
 @forward './spacing';
 @forward './maps';
-@forward './generate-classes.scss';
+@forward './generate-classes';
