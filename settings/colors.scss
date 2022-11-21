@@ -2,6 +2,19 @@
    #COLORS
    ========================================================================== */
 
+$color-primary-010: #e0dad7;
+$color-primary-020: #c6c0b7;
+$color-primary-030: #aca997;
+$color-primary-040: #919377;
+$color-primary-050: #6f7858;
+$color-primary-060: #4b5e39;
+$color-primary-070: #3b5331;
+$color-primary-080: #2c482a;
+$color-primary-090: #223c26;
+$color-primary-100: #1b3023;
+$color-bg-body: #fff9f5;
+$color-interaction: #229ad6;
+
 :root {
   --color-white: hsl(0deg 0% 100%); // #fff
   --color-black: hsl(0deg 0% 0%); // #000;
@@ -29,16 +42,16 @@
   --color-warning-010: #fcf2e6;
   --color-warning-020: #fad8af;
   --color-warning-030: #693d07;
-  --color-primary-010: hsl(20deg 13% 86%); // #e0dad7
-  --color-primary-020: #c6c0b7;
-  --color-primary-030: #aca997;
-  --color-primary-040: #919377;
-  --color-primary-050: #6f7858;
-  --color-primary-060: #4b5e39;
-  --color-primary-070: #3b5331;
-  --color-primary-080: #2c482a;
-  --color-primary-090: #223c26;
-  --color-primary-100: #1b3023;
-  --color-bg-body: #fff9f5;
-  --color-interaction: #229ad6;
+  --color-primary-010: #{$color-primary-010};
+  --color-primary-020: #{$color-primary-020};
+  --color-primary-030: #{$color-primary-030};
+  --color-primary-040: #{$color-primary-040};
+  --color-primary-050: #{$color-primary-050};
+  --color-primary-060: #{$color-primary-060};
+  --color-primary-070: #{$color-primary-070};
+  --color-primary-080: #{$color-primary-080};
+  --color-primary-090: #{$color-primary-090};
+  --color-primary-100: #{$color-primary-100};
+  --color-bg-body: #{$color-bg-body};
+  --color-interaction: #{$color-interaction};
 }
