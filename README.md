@@ -62,3 +62,31 @@ You should probably use your own components too. The `buttons.scss` and `notific
 // @use './components/notifications';
 @use './assets/scss/components/card;
 ```
+
+This library uses some custom breakpoints. Add this configuration in the `main.scss` file. This is going to be refactored in the future so that only the default breakpoints of `sass-mq` are included.
+
+```
+// TOOLS
+@use './tools/mq' with (
+  $mq-breakpoints: (
+    mobile: 320px,
+    l-mobile: 540px,
+    tablet: 740px,
+    l-tablet: 960px,
+    desktop: 1200px,
+    l-desktop: 1440px,
+    wide: 1680px,
+    l-wide: 1820px
+  ),
+  $mq-show-breakpoints: (
+    mobile,
+    l-mobile,
+    tablet,
+    l-tablet,
+    desktop,
+    l-desktop,
+    wide,
+    l-wide
+  )
+);
+```
