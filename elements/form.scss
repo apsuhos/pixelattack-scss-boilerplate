@@ -3,6 +3,7 @@
    ========================================================================== */
 
 @use '../settings/index.settings' as s;
+@use '../tools/index.tools' as t;
 
 input::placeholder {
   color: s.$input-placeholder-color;
@@ -45,7 +46,7 @@ select {
   border-width: s.$input-border-width;
   color: inherit;
   font-weight: inherit;
-  padding: spacing(small);
+  padding: t.spacing(small);
 }
 
 textarea {
