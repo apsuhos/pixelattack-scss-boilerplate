@@ -1,0 +1,154 @@
+/* ==========================================================================
+   #PAGE
+   ========================================================================== */
+
+@use 'sass:math';
+@use 'sass:map';
+@use 'sass:list';
+@use '../settings/' as s;
+@use '../tools/' as t;
+
+:root {
+  @if s.config(color-scheme) {
+    color-scheme: light dark;
+  }
+
+  @each $key_name, $value in s.$global-spacings {
+    --#{$key_name}: calc(#{s.$global-baseline} * #{$value});
+  }
+
+  @each $key_name, $value in s.$global-properties {
+    --#{$key_name}: #{$value};
+  }
+
+  /* stylelint-disable-next-line scss/dollar-variable-pattern */
+  $baseTheme: list.nth(map.keys(s.$theme-colors), 1); // Get the first theme
+
+  @each $color, $value in map.get(s.$theme-colors, $baseTheme) {
+    --#{$color}: #{$value};
+  }
+
+  @each $color, $value in s.$neutral-colors {
+    --#{$color}: #{$value};
+  }
+
+  @each $color, $value in s.$context-colors {
+    --#{$color}: #{$value};
+  }
+}
+
+html {
+  font-size: math.div(s.$global-font-size, 16px) * 1em;
+  line-height: math.div(s.$global-line-height, s.$global-font-size);
+  min-height: 100%;
+
+  // needs to be in sync with the breakpoint the mobile menu disappears
+  @include t.mq($from: l-mobile) {
+    overflow-y: scroll;
+  }
+}
+
+@if s.config(themes) {
+  @each $theme, $colors in s.$theme-colors {
+    body {
+      &.#{$theme} {
+        @each $color, $value in $colors {
+          --#{$color}: #{$value};
+        }
+      }
+    }
+  }
+}
+
+/* prettier-ignore */
+body {
+  // Surfaces
+  --surface-base:           var(--white);           // Body surface
+  --surface-primary-light:  var(--primary-light);   // Complementary light surface
+  --surface-primary-dark:   var(--primary-dark);    // Dark surface, selection
+  --surface-secondary:      var(--secondary);       // CTAs, primary buttons surface
+  --surface-secondary-dark: var(--secondary-dark);  // Primary button surface - hover state
+
+  // Text
+  --text-white:           var(--white);           // Contrast text on darks
+  --text-grey:            var(--grey-dark);       // Complementary text (meta info, dates, authors etc.)
+  --text-primary:         var(--primary);         // Headings, navigation
+  --text-primary-dark:    var(--primary-dark);    // Main body text
+  --text-secondary:       var(--secondary);       // Links, interactions, ghost buttons
+  --text-secondary-dark:  var(--secondary-dark);  // Links, interactions, ghost buttons - hover & select state
+
+  // Borders
+  --border-grey:            var(--grey-light);      // Default border
+  --border-primary:         var(--primary);         // Navigation, pagination. Interactions that are obvious and need to blend seamlessly
+  --border-secondary-dark:  var(--secondary-dark);  // Pagination, forms. Interactions that need to show the currect state
+
+  // SVGs            
+  --svg-primary:        var(--primary);         // Default SVG color                  
+  --svg-secondary-dark: var(--secondary-dark);  // SVG interaction (search icon, caret icon in nav etc)      
+
+  // Outlines
+  --outline-secondary-dark: var(--secondary-dark); // Default outline
+
+  // Context
+  --surface-error:    var(--error-010);   // Error surface
+  --surface-warning:  var(--warning-010); // Warning surface
+  --surface-success:  var(--success-010); // Success surface
+  --surface-info:     var(--info-010);    // Info surface
+  --text-error:   var(--error-030);   // Error text
+  --text-warning: var(--warning-030); // Warning text
+  --text-success: var(--success-030); // Success text
+  --text-info:    var(--info-030);    // Info text
+  --border-error:   var(--error-020);   // Error border
+  --border-warning: var(--warning-020); // Warning border
+  --border-success: var(--success-020); // Success border
+  --border-info:    var(--info-020);    // Info border
+
+  @include t.dark-mode {
+    // Surfaces
+    --surface-base:           var(--primary-dark);
+    --surface-secondary:      var(--secondary-alt);      
+    --surface-secondary-dark: var(--secondary-alt-dark); 
+
+    // Texts
+    --text-primary:         var(--white);    
+    --text-grey:            var(--white);    
+    --text-primary-dark:    var(--white);  
+    --text-secondary:       var(--secondary-alt);      
+    --text-secondary-dark:  var(--secondary-alt-dark);
+
+    // Borders
+    --border-primary:         var(--primary-light);
+    --border-secondary-dark:  var(--secondary-alt-dark);
+
+    // SVGs
+    --svg-primary:        var(--white); // test
+    --svg-secondary-dark: var(--secondary-alt-dark);
+
+    // Outlines
+    --outline-secondary-dark: var(--secondary-alt-dark); 
+
+  }
+
+}
+
+body {
+  --body-background-color: var(--surface-base);
+  --body-text-color: var(--text-primary-dark);
+
+  background-color: var(--body-background-color);
+  color: var(--body-text-color);
+  font-family: var(--global-system-fonts);
+  /* stylelint-disable font-family-no-missing-generic-family-keyword */
+  @if s.config(custom-fonts) {
+    font-family: CeraPro;
+  }
+  /* stylelint-enable font-family-no-missing-generic-family-keyword */
+  /* stylelint-disable-next-line order/order */
+  @include t.typeSize(base);
+
+  font-style: normal;
+  font-weight: 400;
+  /* stylelint-disable-next-line order/properties-alphabetical-order */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

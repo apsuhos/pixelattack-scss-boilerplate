@@ -1,0 +1,319 @@
+/* ==========================================================================
+   #TYPOGRAPHY
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../settings/config' as s;
+
+@if s.config(custom-fonts) {
+  @font-face {
+    font-display: swap;
+    font-family: CeraPro;
+    font-style: normal;
+    font-weight: 400;
+    src: local(''), url('../fonts/cera-pro/cera-pro-regular.otf') format('opentype');
+  }
+
+  @font-face {
+    font-display: swap;
+    font-family: CeraPro;
+    font-style: normal;
+    font-weight: 700;
+    src: local(''), url('../fonts/cera-pro/cera-pro-bold.otf') format('opentype');
+  }
+}
+
+$typography: (
+  'mobile': (
+    'xsmall': (
+      'font-size': 9.7222px,
+      'modifier': 0
+    ),
+    'small': (
+      'font-size': 11.6666px,
+      'modifier': 1
+    ),
+    'base': (
+      'font-size': 14px,
+      'modifier': 0
+    ),
+    'large': (
+      'font-size': 16.8px,
+      'modifier': 0
+    ),
+    'xlarge': (
+      'font-size': 20.16px,
+      'modifier': 1
+    )
+  ),
+  'l-mobile': (
+    'xsmall': (
+      'font-size': 9.7222px,
+      'modifier': 0
+    ),
+    'small': (
+      'font-size': 11.6666px,
+      'modifier': 1
+    ),
+    'base': (
+      'font-size': 14px,
+      'modifier': 0
+    ),
+    'large': (
+      'font-size': 16.8px,
+      'modifier': 0
+    ),
+    'xlarge': (
+      'font-size': 20.16px,
+      'modifier': 1
+    )
+  ),
+  'tablet': (
+    'xsmall': (
+      'font-size': 10.4166px,
+      'modifier': 0
+    ),
+    'small': (
+      'font-size': 12.5px,
+      'modifier': 0
+    ),
+    'base': (
+      'font-size': 15px,
+      'modifier': 1
+    ),
+    'large': (
+      'font-size': 18px,
+      'modifier': 1
+    ),
+    'xlarge': (
+      'font-size': 21.6px,
+      'modifier': 1
+    )
+  ),
+  'l-tablet': (
+    'xsmall': (
+      'font-size': 10.4166px,
+      'modifier': 0
+    ),
+    'small': (
+      'font-size': 12.5px,
+      'modifier': 0
+    ),
+    'base': (
+      'font-size': 15px,
+      'modifier': 1
+    ),
+    'large': (
+      'font-size': 18px,
+      'modifier': 1
+    ),
+    'xlarge': (
+      'font-size': 21.6px,
+      'modifier': 1
+    )
+  ),
+  'desktop': (
+    'xsmall': (
+      'font-size': 11.1111px,
+      'modifier': 0
+    ),
+    'small': (
+      'font-size': 13.3333px,
+      'modifier': 0
+    ),
+    'base': (
+      'font-size': 16px,
+      'modifier': 1
+    ),
+    'large': (
+      'font-size': 19.2px,
+      'modifier': 2
+    ),
+    'xlarge': (
+      'font-size': 23.04px,
+      'modifier': 2
+    )
+  ),
+  'l-desktop': (
+    'xsmall': (
+      'font-size': 11.1111px,
+      'modifier': 0
+    ),
+    'small': (
+      'font-size': 13.3333px,
+      'modifier': 0
+    ),
+    'base': (
+      'font-size': 16px,
+      'modifier': 1
+    ),
+    'large': (
+      'font-size': 19.2px,
+      'modifier': 2
+    ),
+    'xlarge': (
+      'font-size': 23.04px,
+      'modifier': 2
+    )
+  ),
+  'wide': (
+    'xsmall': (
+      'font-size': 11.1111px,
+      'modifier': 0
+    ),
+    'small': (
+      'font-size': 13.3333px,
+      'modifier': 0
+    ),
+    'base': (
+      'font-size': 16px,
+      'modifier': 1
+    ),
+    'large': (
+      'font-size': 19.2px,
+      'modifier': 2
+    ),
+    'xlarge': (
+      'font-size': 23.04px,
+      'modifier': 2
+    )
+  ),
+  'l-wide': (
+    'xsmall': (
+      'font-size': 11.1111px,
+      'modifier': 0
+    ),
+    'small': (
+      'font-size': 13.3333px,
+      'modifier': 0
+    ),
+    'base': (
+      'font-size': 16px,
+      'modifier': 1
+    ),
+    'large': (
+      'font-size': 19.2px,
+      'modifier': 2
+    ),
+    'xlarge': (
+      'font-size': 23.04px,
+      'modifier': 2
+    )
+  )
+) !default;
+$headings: (
+  'mobile': (
+    'h1': (
+      'font-size': 39.8131px,
+      'line-height': auto,
+      'modifier': 0,
+      'important': false
+    ),
+    'h2': (
+      'font-size': 33.1776px,
+      'line-height': auto,
+      'modifier': 0,
+      'important': false
+    ),
+    'h3': (
+      'font-size': 27.648px,
+      'line-height': auto,
+      'modifier': 0,
+      'important': false
+    ),
+    'h4': (
+      'font-size': 23.04px,
+      'line-height': auto,
+      'modifier': 1,
+      'important': false
+    ),
+    'h5': (
+      'font-size': 19.2px,
+      'line-height': auto,
+      'modifier': 1,
+      'important': false
+    ),
+    'h6': (
+      'font-size': 16px,
+      'line-height': auto,
+      'modifier': 1,
+      'important': false
+    )
+  ),
+  'tablet': (
+    'h1': (
+      'font-size': 51.8798px,
+      'line-height': auto,
+      'modifier': 0,
+      'important': false
+    ),
+    'h2': (
+      'font-size': 41.5039px,
+      'line-height': auto,
+      'modifier': 0,
+      'important': false
+    ),
+    'h3': (
+      'font-size': 33.2031px,
+      'line-height': auto,
+      'modifier': 0,
+      'important': false
+    ),
+    'h4': (
+      'font-size': 26.5625px,
+      'line-height': auto,
+      'modifier': 1,
+      'important': false
+    ),
+    'h5': (
+      'font-size': 21.25px,
+      'line-height': auto,
+      'modifier': 0,
+      'important': false
+    ),
+    'h6': (
+      'font-size': 17px,
+      'line-height': auto,
+      'modifier': 0,
+      'important': false
+    )
+  ),
+  'desktop': (
+    'h1': (
+      'font-size': 75.757px,
+      'line-height': auto,
+      'modifier': 1,
+      'important': false
+    ),
+    'h2': (
+      'font-size': 56.832px,
+      'line-height': auto,
+      'modifier': 1,
+      'important': false
+    ),
+    'h3': (
+      'font-size': 42.6346px,
+      'line-height': auto,
+      'modifier': 1,
+      'important': false
+    ),
+    'h4': (
+      'font-size': 31.984px,
+      'line-height': auto,
+      'modifier': 1,
+      'important': false
+    ),
+    'h5': (
+      'font-size': 23.994px,
+      'line-height': auto,
+      'modifier': 1,
+      'important': false
+    ),
+    'h6': (
+      'font-size': 18px,
+      'line-height': auto,
+      'modifier': 0,
+      'important': false
+    )
+  )
+) !default;

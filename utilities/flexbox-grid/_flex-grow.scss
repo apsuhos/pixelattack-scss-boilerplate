@@ -1,0 +1,30 @@
+/* ==========================================================================
+   #FLEX GROW
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$flex-grow: (
+  'properties': (
+    '-flex-grow': flex-grow
+  ),
+  'values': (
+    '-0': 0,
+    '-1': 1,
+    '-2': 2,
+    '-3': 3,
+    '-4': 4
+  )
+) !default;
+
+@include t.generate-classes($flex-grow);
+@include t.generate-responsive-classes($flex-grow);
+
+/*
+<div class="[ u-flex ][ u-space-x ]">
+  <div style="height: 100px;" class="[ u-flex-grow-1 ][ u-bg-color-primary ]"></div>
+  <div style="height: 100px; width: 100px;" class="[ u-flex-grow-0 u-flex-grow-1@desktop ][ u-bg-color-primary ]"></div>
+  <div style="height: 100px;" class="[ u-flex-grow-1 ][ u-bg-color-primary ]"></div>
+</div>
+*/

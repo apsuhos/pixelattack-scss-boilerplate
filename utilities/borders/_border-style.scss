@@ -1,0 +1,33 @@
+/* ==========================================================================
+   #BORDER STYLE
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$border-style: (
+  'properties': (
+    '-border-style': border-style,
+    '-border-style-b': border-bottom-style,
+    '-border-style-l': border-left-style,
+    '-border-style-r': border-right-style,
+    '-border-style-t': border-top-style
+  ),
+  'values': (
+    '-hidden': hidden,
+    '-dotted': dotted,
+    '-dashed': dashed,
+    '-solid': solid,
+    '-double': double,
+    '-groove': groove,
+    '-ridge': ridge,
+    '-inset': inset,
+    '-outset': outset,
+    '-none': none
+  )
+) !default;
+
+@include t.generate-classes($border-style);
+@include t.generate-responsive-classes($border-style);
+
+// <div style="width: 100px; height: 100px; background-color: red;" class="[ u-border-style-dotted u-border-0 u-border-style-r-solid ]"></div>

@@ -1,0 +1,68 @@
+/* ==========================================================================
+   #TEXT DECORATION COLORS
+   ========================================================================== */
+
+@use 'sass:map';
+@use 'sass:list';
+@use '../../tools/' as t;
+@use '../../settings' as s;
+
+$text-decoration-colors: (
+  'properties': (
+    '-decoration': text-decoration-color
+  ),
+  'keywords': (
+    '-inherit': inherit,
+    '-current': currentcolor,
+    '-transparent': transparent
+  ),
+  'theme-colors': (),
+  'neutral-colors': (),
+  'context-colors': ()
+) !default;
+$first-theme-for-text-decoration-colors: list.nth(map.keys(s.$theme-colors), 1);
+
+// Merge all colors from settings with this map before generating classes
+$text-decoration-colors: map.merge(
+  $text-decoration-colors,
+  'theme-colors',
+  map.get(s.$theme-colors, $first-theme-for-text-decoration-colors)
+);
+$text-decoration-colors: map.merge($text-decoration-colors, 'neutral-colors', s.$neutral-colors);
+$text-decoration-colors: map.merge($text-decoration-colors, 'context-colors', s.$context-colors);
+
+@include t.generate-keyword-color-rules($text-decoration-colors);
+@include t.generate-theme-color-rules($text-decoration-colors);
+@include t.generate-neutral-color-rules($text-decoration-colors);
+@include t.generate-context-color-rules($text-decoration-colors);
+
+@include t.generate-hover-keyword-color-rules($text-decoration-colors);
+@include t.generate-hover-theme-color-rules($text-decoration-colors);
+@include t.generate-hover-neutral-color-rules($text-decoration-colors);
+@include t.generate-hover-context-color-rules($text-decoration-colors);
+
+@include t.generate-focus-keyword-color-rules($text-decoration-colors);
+@include t.generate-focus-theme-color-rules($text-decoration-colors);
+@include t.generate-focus-neutral-color-rules($text-decoration-colors);
+@include t.generate-focus-context-color-rules($text-decoration-colors);
+
+/* prettier-ignore */
+@if s.config(color-scheme) {
+  @include t.generate-color-scheme-theme-color-rules($text-decoration-colors);
+  @include t.generate-color-scheme-neutral-color-rules($text-decoration-colors);
+  @include t.generate-color-scheme-context-color-rules($text-decoration-colors);
+
+  @include t.generate-hover-color-scheme-theme-color-rules($text-decoration-colors);
+  @include t.generate-hover-color-scheme-neutral-color-rules($text-decoration-colors);
+  @include t.generate-hover-color-scheme-context-color-rules($text-decoration-colors);
+
+  @include t.generate-focus-color-scheme-theme-color-rules($text-decoration-colors);
+  @include t.generate-focus-color-scheme-neutral-color-rules($text-decoration-colors);
+  @include t.generate-focus-color-scheme-context-color-rules($text-decoration-colors);
+}
+
+/*
+
+<p class="[ u-decoration-line-through u-decoration-error-030 hover:u-decoration-transparent ]">This starts as xsmall, but it is explicitly assigned the xlarge font size utility @tablet and then the xsmall @desktop</p>
+
+*/

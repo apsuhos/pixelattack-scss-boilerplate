@@ -1,0 +1,58 @@
+/* ==========================================================================
+   #BLOCK
+   ========================================================================== */
+
+@use '../tools/' as t;
+
+.o-block {
+  --block-padding: #{t.rem(t.spacing(xlarge))};
+}
+
+/* stylelint-disable-next-line no-duplicate-selectors */
+.o-block {
+  padding-block: var(--block-padding);
+
+  @include t.mq($from: l-tablet) {
+    --block-padding: #{t.rem(t.spacing(huge))};
+  }
+
+  @include t.mq($from: l-desktop) {
+    --block-padding: #{t.rem(t.spacing(xhuge))};
+  }
+
+  @include t.mq($from: l-wide) {
+    --block-padding: #{t.rem(t.spacing(enormous))};
+  }
+}
+
+.o-block--small {
+  --block-padding: #{t.rem(t.spacing(large))};
+
+  @include t.mq($from: l-tablet) {
+    --block-padding: #{t.rem(t.spacing(xlarge))};
+  }
+
+  @include t.mq($from: l-desktop) {
+    --block-padding: #{t.rem(t.spacing(huge))};
+  }
+
+  @include t.mq($from: l-wide) {
+    --block-padding: #{t.rem(t.spacing(xhuge))};
+  }
+}
+
+.o-block--large {
+  --block-padding: #{t.rem(t.spacing(huge))};
+
+  @include t.mq($from: l-tablet) {
+    --block-padding: #{t.rem(t.spacing(xhuge))};
+  }
+
+  @include t.mq($from: l-desktop) {
+    --block-padding: #{t.rem(t.spacing(enormous))};
+  }
+
+  @include t.mq($from: l-wide) {
+    --block-padding: #{t.rem(t.spacing(xenormous))};
+  }
+}

@@ -1,0 +1,19 @@
+/* ==========================================================================
+   #SELECTION
+   ========================================================================== */
+
+@use '../tools/' as t;
+
+::selection {
+  --selection-background-color: var(--surface-primary-dark);
+  --selection-text-color: var(--text-white);
+
+  @include t.dark-mode {
+    --selection-background-color: var(--primary-light);
+    --selection-text-color: var(--primary-dark);
+  }
+
+  /* stylelint-disable-next-line order/order */
+  background: var(--selection-background-color);
+  color: var(--selection-text-color);
+}

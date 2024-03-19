@@ -1,0 +1,45 @@
+/* ==========================================================================
+   #GRID AUTO FLOW
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$grid-auto-flow: (
+  'properties': (
+    '-grid-flow': grid-auto-flow
+  ),
+  'values': (
+    '-row': row,
+    '-col': column,
+    '-dense': dense,
+    '-row-dense': 'row-dense',
+    '-column-dense': 'column-dense'
+  )
+) !default;
+
+@include t.generate-classes($grid-auto-flow);
+@include t.generate-responsive-classes($grid-auto-flow);
+
+/*
+<div class="[ u-grid u-grid-rows-3 u-grid-flow-col@tablet u-gap ]">
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">1</div>
+  </div>
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">2</div>
+  </div>
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">3</div>
+  </div>
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">4</div>
+  </div>
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">5</div>
+  </div>
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">6</div>
+  </div>
+</div>
+*/

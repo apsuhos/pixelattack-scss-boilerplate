@@ -1,0 +1,27 @@
+/*  ==========================================================================
+    #BORDER WIDTHS
+    ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$border-width: (
+  'properties': (
+    '-border': border-width,
+    '-border-b': border-bottom-width,
+    '-border-l': border-left-width,
+    '-border-r': border-right-width,
+    '-border-t': border-top-width
+  ),
+  'values': (
+    '-global': var(--global-border-width),
+    '-0': 0,
+    null: 1px,
+    '-2': 2px,
+    '-4': 4px,
+    '-8': 8px
+  )
+) !default;
+
+@include t.generate-classes($border-width);
+@include t.generate-responsive-classes($border-width);

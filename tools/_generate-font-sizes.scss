@@ -1,0 +1,63 @@
+/* ==========================================================================
+   #GENERATE FONT SIZES
+   ========================================================================== */
+
+/*
+  * The `t.font-size` mixin exclusively accepts pixel values to generate both font size and line height.
+  * 
+  * Conversely, the `typeSize` mixin accepts a predefined set of values [xsmall, small, base, large, xlarge], 
+  * generating font sizes and line heights accordingly. (it uses the `t.font-size` mixin)
+  *
+  * When responsive mode is enabled, it automatically produces responsive variants.
+  *
+  * This mixin was designed for consistency with named values (such as xsmall, large, etc.) rather than hardcoding specific values.
+
+  * Usage example:
+  *
+  * .test {
+  *    @include t.typeSize(small);
+  *  }
+  * 
+  * which generates:
+  *
+  * .test {
+  *     font-size: 0.8333333125rem;
+  *     line-height: 1.5000000375;
+  *  }
+  */
+
+@use 'sass:meta';
+@use 'sass:map';
+@use '../settings/' as s;
+@use '../tools/mq' as mq;
+@use '../tools/font-size' as fs;
+
+$allowed-sizes: (xsmall, small, base, large, xlarge);
+
+/* stylelint-disable scss/at-mixin-pattern */
+
+@mixin typeSize($font-size) {
+  @if index($allowed-sizes, $font-size) {
+    font-size: $font-size;
+  } @else {
+    @error "Invalid size value: #{$font-size}. Must be xsmall, small, base, large, or xlarge.";
+  }
+
+  $mobile-font-size: map.get(s.$typography, 'mobile', $font-size, 'font-size');
+  $tablet-font-size: map.get(s.$typography, 'tablet', $font-size, 'font-size');
+  $desktop-font-size: map.get(s.$typography, 'desktop', $font-size, 'font-size');
+  $mobile-modifier: map.get(s.$typography, 'mobile', $font-size, 'modifier');
+  $tablet-modifier: map.get(s.$typography, 'tablet', $font-size, 'modifier');
+  $desktop-modifier: map.get(s.$typography, 'desktop', $font-size, 'modifier');
+
+  @include fs.font-size($mobile-font-size, $modifier: $mobile-modifier);
+
+  @if s.config(responsive-type) == true {
+    @include mq.mq($from: tablet) {
+      @include fs.font-size($tablet-font-size, $modifier: $tablet-modifier);
+    }
+    @include mq.mq($from: desktop) {
+      @include fs.font-size($desktop-font-size, $modifier: $desktop-modifier);
+    }
+  }
+}

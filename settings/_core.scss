@@ -1,0 +1,64 @@
+/* ==========================================================================
+   #CORE
+   ========================================================================== */
+
+@use 'sass:map';
+
+// This core file sets up the most important setup variables. They
+// underpin a lot of how the framework functions and should be modified and
+// preconfigured with caution.
+
+// Baseline grid lines height.
+// Every spacing metric should be based on this.
+
+$global-baseline: 4px !default;
+
+// Spacing variants are determined based on your project’s global baseline grid.
+// The value of each of the following map’s entries determines how many grid
+// lines our spacing unit variants span.
+// Each value should be a unitless integer.
+
+$global-spacings: (
+  'xsmall': 1,
+  'small': 2,
+  'base': 4,
+  'large': 6,
+  'xlarge': 9,
+  'huge': 14,
+  'xhuge': 20,
+  'enormous': 30,
+  'xenormous': 45
+) !default;
+
+// Base typographical styles.
+
+$global-font-size: 16px !default;
+$global-line-height: map.get($global-spacings, large) * $global-baseline !default;
+
+// Check that the chosen font rules are pixel numbers.
+
+@each $_font-globals in $global-font-size $global-line-height {
+  @if type-of($_font-globals) == number {
+    @if unit($_font-globals) != 'px' {
+      @error '`#{$_font-globals}` needs to be a pixel value.';
+    }
+  } @else {
+    @error '`#{$_font-globals}` needs to be a number.';
+  }
+}
+
+// Check that the chosen size factors are unitless, integer numbers.
+
+@each $_spacing-unit, $_spacing-unit-value in $global-spacings {
+  @if type-of($_spacing-unit-value) == number {
+    @if unitless($_spacing-unit-value) == false {
+      @error 'The entry `#{$_spacing-unit}` in the `$global-spacings` map needs to be unitless.';
+    }
+
+    @if $_spacing-unit-value != ceil($_spacing-unit-value) {
+      @error 'The entry `#{$_spacing-unit}` in the `$global-spacings` map needs to be an integer.';
+    }
+  } @else {
+    @error 'The entry `#{$_spacing-unit}` in the `$global-spacings` map needs to be a number.';
+  }
+}

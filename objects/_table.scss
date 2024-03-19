@@ -1,0 +1,139 @@
+/* ==========================================================================
+   #TABLE
+   ========================================================================== */
+
+@use '../tools/' as t;
+
+$table-xsmall-cell-padding: t.rem(t.spacing(xsmall)) !default;
+$table-small-cell-padding: t.rem(t.spacing(small)) !default;
+$table-cell-padding: t.rem(t.spacing(base)) !default;
+$table-large-cell-padding: t.rem(t.spacing(large)) !default;
+$table-xlarge-cell-padding: t.rem(t.spacing(xlarge)) !default;
+$table-huge-cell-padding: t.rem(t.spacing(huge)) !default;
+$table-xhuge-cell-padding: t.rem(t.spacing(xhuge)) !default;
+$table-enormous-cell-padding: t.rem(t.spacing(enormous)) !default;
+$table-xenormous-cell-padding: t.rem(t.spacing(xenormous)) !default;
+
+.o-table {
+  width: 100%;
+
+  th,
+  td {
+    padding: $table-cell-padding;
+  }
+}
+
+/*  Equal-width table cells
+    ========================================================================== */
+
+/**
+* `table-layout: fixed` forces all cells within a table to occupy the same
+* width as each other. This also has performance benefits: because the browser
+* does not need to (re)calculate cell dimensions based on content it discovers,
+* the table can be rendered very quickly. Further reading:
+* https://developer.mozilla.org/en-US/docs/Web/CSS/table-layout#Values
+*/
+
+.o-table--fixed {
+  table-layout: fixed;
+}
+
+/*  Size variants
+    ========================================================================== */
+
+.o-table--xsmall {
+  th,
+  td {
+    padding: $table-xsmall-cell-padding;
+  }
+}
+
+.o-table--small {
+  th,
+  td {
+    padding: $table-small-cell-padding;
+  }
+}
+
+.o-table--large {
+  th,
+  td {
+    padding: $table-large-cell-padding;
+  }
+}
+
+.o-table--xlarge {
+  th,
+  td {
+    padding: $table-xlarge-cell-padding;
+  }
+}
+
+.o-table--huge {
+  th,
+  td {
+    padding: $table-huge-cell-padding;
+  }
+}
+
+.o-table--xhuge {
+  th,
+  td {
+    padding: $table-xhuge-cell-padding;
+  }
+}
+
+.o-table--enormous {
+  th,
+  td {
+    padding: $table-enormous-cell-padding;
+  }
+}
+
+.o-table--xenormous {
+  th,
+  td {
+    padding: $table-xenormous-cell-padding;
+  }
+}
+
+/*
+
+<table class="[ o-table o-table--large ]" border="1">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>City</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John Doe</td>
+      <td>35</td>
+      <td>New York</td>
+    </tr>
+    <tr>
+      <td>Jane Smith</td>
+      <td>28</td>
+      <td>Los Angeles</td>
+    </tr>
+    <tr>
+      <td>Michael Johnson</td>
+      <td>42</td>
+      <td>Chicago</td>
+    </tr>
+    <tr>
+      <td>Emily Brown</td>
+      <td>31</td>
+      <td>Houston</td>
+    </tr>
+    <tr>
+      <td>David Martinez</td>
+      <td>39</td>
+      <td>Miami</td>
+    </tr>
+  </tbody>
+</table>
+
+*/

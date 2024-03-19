@@ -1,0 +1,59 @@
+/* ==========================================================================
+   #HEADINGS UTIL
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../elements' as e;
+@use '../../tools/' as t;
+@use '../../settings' as s;
+
+@each $heading, $properties in e.$mobile-headings {
+  $heading-font-size: map.get($properties, 'font-size');
+  $heading-line-height: map.get($properties, 'line-height');
+  $heading-modifier: map.get($properties, 'modifier');
+
+  .u-#{$heading} {
+    @include t.font-size(
+      $heading-font-size,
+      $line-height: $heading-line-height,
+      $modifier: $heading-modifier,
+      $important: true
+    );
+  }
+}
+
+@if s.config(responsive-type) == true {
+  @each $heading, $properties in e.$tablet-headings {
+    $heading-font-size: map.get($properties, 'font-size');
+    $heading-line-height: map.get($properties, 'line-height');
+    $heading-modifier: map.get($properties, 'modifier');
+
+    @include t.mq($from: tablet) {
+      .u-#{$heading} {
+        @include t.font-size(
+          $heading-font-size,
+          $line-height: $heading-line-height,
+          $modifier: $heading-modifier,
+          $important: true
+        );
+      }
+    }
+  }
+
+  @each $heading, $properties in e.$desktop-headings {
+    $heading-font-size: map.get($properties, 'font-size');
+    $heading-line-height: map.get($properties, 'line-height');
+    $heading-modifier: map.get($properties, 'modifier');
+
+    @include t.mq($from: desktop) {
+      .u-#{$heading} {
+        @include t.font-size(
+          $heading-font-size,
+          $line-height: $heading-line-height,
+          $modifier: $heading-modifier,
+          $important: true
+        );
+      }
+    }
+  }
+}

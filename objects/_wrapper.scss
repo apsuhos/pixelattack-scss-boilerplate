@@ -1,0 +1,16 @@
+/* ==========================================================================
+   #WRAPPER
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/' as t;
+
+$wrapper-width: map.get(t.$mq-breakpoints, l-wide) !default;
+
+.o-wrapper {
+  @include t.clearfix;
+
+  margin-inline: auto;
+  max-width: $wrapper-width;
+  padding-inline: 0;
+}

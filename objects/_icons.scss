@@ -1,0 +1,56 @@
+/* ==========================================================================
+   #ICONS
+   ========================================================================== */
+
+@use '../tools/' as t;
+@use '../settings/' as s;
+
+.o-icon {
+  height: t.rem(t.spacing(base));
+  width: t.rem(t.spacing(base));
+}
+
+/*
+ * I didn't use the $global-spacings map because the values did not produce well scaled icons.
+ * Instead, the jump between variations is 4px. 
+ */
+
+.o-icon--xsmall {
+  height: t.rem(8px);
+  width: t.rem(8px);
+}
+
+.o-icon--small {
+  height: t.rem(12px);
+  width: t.rem(12px);
+}
+
+.o-icon--large {
+  height: t.rem(20px);
+  width: t.rem(20px);
+}
+
+.o-icon--xlarge {
+  height: t.rem(24px);
+  width: t.rem(24px);
+}
+
+.o-icon--huge {
+  height: t.rem(28px);
+  width: t.rem(28px);
+}
+
+.o-icon--xhuge {
+  height: t.rem(32px);
+  width: t.rem(32px);
+}
+
+.o-icon--enormous {
+  height: t.rem(36px);
+  width: t.rem(36px);
+}
+
+.o-icon--xenormous {
+  height: t.rem(40px);
+  width: t.rem(40px);
+}

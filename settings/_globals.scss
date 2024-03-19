@@ -1,0 +1,24 @@
+/* ==========================================================================
+   #GLOBALS
+   ========================================================================== */
+
+@use '../tools/rem' as t;
+
+/* prettier-ignore */
+$global-properties: (
+  "global-system-fonts": (ui-sans-serif, system-ui, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"),
+  "global-radius": t.rem(0),
+  "global-transition-timing-function": cubic-bezier(0.4, 0, 0.2, 1),
+  "global-transition-duration": 150ms,
+  "global-border-color": currentcolor,
+  "global-border-width": t.rem(2px),
+  "global-border-style": solid,
+  "global-outline-width": t.rem(2px),
+  "global-outline-style": dashed,
+  "global-outline-offset": t.rem(2px),
+  "global-text-decoration-line": underline,
+  "global-text-decoration-color": currentcolor,
+  "global-text-decoration-thickness": t.rem(1px),
+  "global-text-underline-offset": t.rem(4px),
+  "global-letter-spacing": 0.025em,
+) !default;

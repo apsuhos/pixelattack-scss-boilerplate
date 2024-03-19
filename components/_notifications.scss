@@ -1,0 +1,115 @@
+/* ==========================================================================
+   #NOTIFICATIONS
+   ========================================================================== */
+
+@use '../tools/' as t;
+
+/* stylelint-disable max-nesting-depth */
+
+.c-notification {
+  --notification-padding: #{t.rem(t.spacing(base))};
+  --notification-border-width: var(--global-border-width);
+  --notification-border-style: var(--global-border-style);
+  --notification-border-radius: var(--radius);
+}
+
+.c-notification--error {
+  --notification-background-color: var(--surface-error);
+  --notification-border-color: var(--border-error);
+  --notification-color: var(--text-error);
+}
+
+.c-notification--warning {
+  --notification-background-color: var(--surface-warning);
+  --notification-border-color: var(--border-warning);
+  --notification-color: var(--text-warning);
+}
+
+.c-notification--success {
+  --notification-background-color: var(--surface-success);
+  --notification-border-color: var(--border-success);
+  --notification-color: var(--text-success);
+}
+
+.c-notification--info {
+  --notification-background-color: var(--surface-info);
+  --notification-border-color: var(--border-info);
+  --notification-color: var(--text-info);
+}
+
+.c-notification--error,
+.c-notification--warning,
+.c-notification--success,
+.c-notification--info {
+  @include t.dark-mode {
+    --notification-border-color: transparent;
+  }
+}
+
+.c-notification--xsmall {
+  --notification-padding: #{t.rem(t.spacing(xsmall))};
+}
+
+.c-notification--small {
+  --notification-padding: #{t.rem(t.spacing(small))};
+}
+
+.c-notification--large {
+  --notification-padding: #{t.rem(t.spacing(large))};
+}
+
+/* stylelint-disable no-duplicate-selectors */
+
+.c-notification {
+  background-color: var(--notification-background-color);
+  border-color: var(--notification-border-color);
+  border-radius: var(--notification-border-radius);
+  border-style: var(--notification-border-style);
+  border-width: var(--notification-border-width);
+  color: var(--notification-color);
+  padding: var(--notification-padding);
+
+  > * {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.c-notification__body a {
+  color: currentcolor;
+
+  @include t.dark-mode {
+    &:focus-visible {
+      outline-color: currentcolor;
+    }
+  }
+}
+
+.c-notification::selection {
+  @include t.dark-mode {
+    --selection-background-color: var(--primary-dark);
+    --selection-text-color: var(--white);
+  }
+}
+
+/*
+
+<div class="[ c-notification c-notification--info ][ u-padding u-padding-large@desktop ][ u-flex u-flex-column u-gap-large ]">
+  <div class="[ o-media o-media--middle ][ u-border-0 u-border-b u-border-style-solid u-border-info-020 ][ u-padding-bottom-large ]">
+    <div class="[ o-media__img ][ u-hidden ][ u-width-10 u-height-10 u-width-12@tablet u-height-12@tablet u-width-14@desktop u-height-14@desktop ][ u-bg-color-info-020 ][ u-flex@l-mobile u-justify-center@l-mobile u-items-center@l-mobile ][ u-rounded-full ]">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="[ u-height-7 u-height-8@tablet u-height-9@desktop ][ u-fill-transparent ][ u-stroke-onehalf u-stroke-current ]">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+      </svg>
+    </div>
+    <div class="[ o-media__body ][ c-notification__body ]">
+      <p>Lorem ipsum dolor sit <a href="#">amet consectetur</a>, adipisicing elit. Minima, culpa iste et expedita, molestiae dolor dignissimos quos repellendus tempora non laborum voluptatibus! Totam facere excepturi voluptas ipsa. Asperiores, minima rerum?</p>
+    </div>
+  </div>
+  <div class="[ u-flex u-gap-small ][ u-self-center ]">
+    <a href="#" class="[ c-btn c-btn--primary c-btn--large c-btn--ghost ][ u-border-color-success-020 u-color-success-030 hover:u-bg-color-success-010 u-transition-background-color ]">Accept</a>
+    <a href="#" class="[ c-btn c-btn--primary c-btn--large c-btn--ghost ][ u-border-color-error-020 u-color-error-030 hover:u-bg-color-error-010 u-transition-background-color ]">Deny</a>
+  </div>
+</div>
+
+*/

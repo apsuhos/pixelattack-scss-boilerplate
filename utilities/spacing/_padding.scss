@@ -1,0 +1,81 @@
+/* ==========================================================================
+   #PADDING
+   ========================================================================== */
+
+@use 'sass:map';
+@use 'sass:math';
+@use '../../settings' as s;
+@use '../../tools/' as t;
+
+$padding: (
+  'properties': (
+    '-padding': padding
+  ),
+  'directions': (
+    null: null,
+    '-horizontal': '-inline-start' '-inline-end',
+    '-vertical': '-block-start' '-block-end',
+    '-top': '-block-start',
+    '-right': '-inline-end',
+    '-bottom': '-block-end',
+    '-left': '-inline-start'
+  ),
+  'values': (
+    '-none': 0,
+    '-xsmall': t.rem(t.spacing(xsmall)),
+    '-small': t.rem(t.spacing(small)),
+    null: t.rem(t.spacing(base)),
+    '-large': t.rem(t.spacing(large)),
+    '-xlarge': t.rem(t.spacing(xlarge)),
+    '-huge': t.rem(t.spacing(huge)),
+    '-xhuge': t.rem(t.spacing(xhuge)),
+    '-enormous': t.rem(t.spacing(enormous)),
+    '-xenormous': t.rem(t.spacing(xenormous)),
+    '-auto': auto
+  )
+) !default;
+
+// Populate map with values
+// Create a new empty map
+$padding-arithmetic-progress: ();
+
+// Set the index that will be used
+$p: 0;
+
+// The max size needs to be a multiple of the $global-baseline
+// in order not to disturb the vertical rhythm if a width
+// value is applied vertically to the element.
+
+// IMPORTANT: Keep the multiplier low. A value of 50
+// will produce approximatelly 9000 lines of code if
+// you generate responsive classes.
+
+@while $p <= (t.strip-unit(s.$global-baseline) * 5) {
+  $converted: t.rem($p);
+
+  // set the key as a map named "values" and add a value-namespace
+  // and a value to that.
+  // $padding-arithmetic-progress: ( "values": ( "-0": 0, "-1": 6, "-2: "12" ... ) );
+  // Notice that I divide with the $p in order to keep the suffix low.
+  // So instead of u-padding-300: 300px;
+  // it will be: u-padding-50: 300px;
+  $padding-arithmetic-progress: map.set(
+    $padding-arithmetic-progress,
+    'values',
+    '-#{math.div($p, t.strip-unit(s.$global-baseline))}',
+    $converted
+  );
+
+  // Step
+  $p: $p + t.strip-unit(s.$global-baseline);
+}
+
+// Merge the two maps and replace the original.
+// Both maps have a key named "values" so the new
+// values will be appended to the original map.
+// They are added after the original values because
+// I need them to be further down the cascade.
+$padding: map.deep-merge($padding, $padding-arithmetic-progress);
+
+@include t.generate-classes($padding);
+@include t.generate-responsive-classes($padding);

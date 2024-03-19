@@ -1,0 +1,200 @@
+/*  ==========================================================================
+    #MEDIA
+    ========================================================================== */
+
+@use '../tools/' as t;
+
+$media-xsmall-spacing: t.rem(t.spacing(xsmall)) !default;
+$media-small-spacing: t.rem(t.spacing(small)) !default;
+$media-spacing: t.rem(t.spacing(base)) !default;
+$media-large-spacing: t.rem(t.spacing(large)) !default;
+$media-xlarge-spacing: t.rem(t.spacing(xlarge)) !default;
+$media-huge-spacing: t.rem(t.spacing(huge)) !default;
+$media-xhuge-spacing: t.rem(t.spacing(xhuge)) !default;
+$media-enormous-spacing: t.rem(t.spacing(enormous)) !default;
+$media-xenormous-spacing: t.rem(t.spacing(xenormous)) !default;
+
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable max-nesting-depth */
+
+.o-media {
+  display: flex;
+}
+
+.o-media__img {
+  margin-right: $media-spacing;
+}
+
+.o-media__body {
+  flex: 1 1 0%;
+
+  &,
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/*  Vertical alignment modifiers.
+    ========================================================================== */
+
+.o-media--middle {
+  align-items: center;
+}
+
+.o-media--bottom {
+  align-items: flex-end;
+}
+
+/* Size variants
+  ========================================================================== */
+
+/**
+* Modify the amount of space between our image and our text. We also have
+* reversible options for all available sizes.
+*/
+
+.o-media--flush {
+  > .o-media__img {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.o-media--xsmall {
+  > .o-media__img {
+    margin-right: $media-xsmall-spacing;
+  }
+
+  &.o-media--reverse {
+    > .o-media__img {
+      margin-left: $media-xsmall-spacing;
+      margin-right: 0;
+    }
+  }
+}
+
+.o-media--small {
+  > .o-media__img {
+    margin-right: $media-small-spacing;
+  }
+
+  &.o-media--reverse {
+    > .o-media__img {
+      margin-left: $media-small-spacing;
+      margin-right: 0;
+    }
+  }
+}
+
+.o-media--large {
+  > .o-media__img {
+    margin-right: $media-large-spacing;
+  }
+
+  &.o-media--reverse {
+    > .o-media__img {
+      margin-left: $media-large-spacing;
+      margin-right: 0;
+    }
+  }
+}
+
+.o-media--xlarge {
+  > .o-media__img {
+    margin-right: $media-xlarge-spacing;
+  }
+
+  &.o-media--reverse {
+    > .o-media__img {
+      margin-left: $media-xlarge-spacing;
+      margin-right: 0;
+    }
+  }
+}
+
+.o-media--huge {
+  > .o-media__img {
+    margin-right: $media-huge-spacing;
+  }
+
+  &.o-media--reverse {
+    > .o-media__img {
+      margin-left: $media-huge-spacing;
+      margin-right: 0;
+    }
+  }
+}
+
+.o-media--xhuge {
+  > .o-media__img {
+    margin-right: $media-xhuge-spacing;
+  }
+
+  &.o-media--reverse {
+    > .o-media__img {
+      margin-left: $media-xhuge-spacing;
+      margin-right: 0;
+    }
+  }
+}
+
+.o-media--enormous {
+  > .o-media__img {
+    margin-right: $media-enormous-spacing;
+  }
+
+  &.o-media--reverse {
+    > .o-media__img {
+      margin-left: $media-enormous-spacing;
+      margin-right: 0;
+    }
+  }
+}
+
+.o-media--xenormous {
+  > .o-media__img {
+    margin-right: $media-xenormous-spacing;
+  }
+
+  &.o-media--reverse {
+    > .o-media__img {
+      margin-left: $media-xenormous-spacing;
+      margin-right: 0;
+    }
+  }
+}
+
+/* Reversed media objects
+  ========================================================================== */
+
+.o-media--reverse {
+  > .o-media__img {
+    margin-left: $media-spacing;
+    margin-right: 0;
+    order: 1;
+  }
+}
+
+/*
+
+<div class="[ o-media o-media--large ]">
+  <img src="https://placehold.co/600x400" alt="image" class="[ o-media__img ]">
+  <div class="[ o-media__body ]">
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus placeat illo temporibus reprehenderit officia impedit velit, hic porro, necessitatibus tenetur assumenda quo fugit fuga est obcaecati sequi. Neque possimus, similique quae, ea unde est asperiores, deleniti error quibusdam dolorum quia nesciunt soluta. Quia provident cumque dicta aut, quaerat libero quisquam?</p>
+  </div>
+</div>
+
+<div class="[ c-notification c-notification--warning ][ u-padding u-padding-large@desktop ]">
+    <div class="[ o-media o-media--middle ]">
+        <div class="[ o-media__img ][ u-hidden ][ u-width-10 u-height-10 u-width-12@tablet u-height-12@tablet u-width-14@desktop u-height-14@desktop ][ u-bg-color-warning-020 ][ u-flex@l-mobile u-justify-center@l-mobile u-items-center@l-mobile ][ u-rounded-full ]">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="[ u-height-7 u-height-8@tablet u-height-9@desktop ][ u-fill-transparent ][ u-stroke-onehalf u-stroke-current ]">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+          </svg>
+        </div>
+        <div class="[ o-media__body ]">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima, culpa iste et expedita, molestiae dolor dignissimos quos repellendus tempora non laborum voluptatibus! Totam facere excepturi voluptas ipsa. Asperiores, minima rerum?</p>
+        </div>
+    </div>
+</div>
+
+*/

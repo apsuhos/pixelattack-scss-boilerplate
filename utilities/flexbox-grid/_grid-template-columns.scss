@@ -1,0 +1,45 @@
+/* ==========================================================================
+   #GRID TEMPLATE COLUMNS
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$grid-template-columns: (
+  'properties': (
+    '-grid-cols': grid-template-columns
+  ),
+  'values': (
+    '-1': repeat(1, minmax(0, 1fr)),
+    '-2': repeat(2, minmax(0, 1fr)),
+    '-3': repeat(3, minmax(0, 1fr)),
+    '-4': repeat(4, minmax(0, 1fr)),
+    '-5': repeat(5, minmax(0, 1fr)),
+    '-6': repeat(6, minmax(0, 1fr)),
+    '-7': repeat(7, minmax(0, 1fr)),
+    '-8': repeat(8, minmax(0, 1fr)),
+    '-9': repeat(9, minmax(0, 1fr)),
+    '-10': repeat(10, minmax(0, 1fr)),
+    '-11': repeat(11, minmax(0, 1fr)),
+    '-12': repeat(12, minmax(0, 1fr)),
+    '-none': none,
+    '-subgrid': subgrid
+  )
+) !default;
+
+@include t.generate-classes($grid-template-columns);
+@include t.generate-responsive-classes($grid-template-columns);
+
+/*
+<div class="[ u-grid u-grid-cols-1 u-grid-cols-2@tablet u-gap ]">
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">1</div>
+  </div>
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">2</div>
+  </div>
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">3</div>
+  </div>
+</div>
+*/

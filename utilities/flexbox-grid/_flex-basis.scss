@@ -1,0 +1,58 @@
+/* ==========================================================================
+   #FLEX BASIS
+   ========================================================================== */
+
+@use 'sass:map';
+@use 'sass:math';
+@use '../../settings' as s;
+@use '../../tools/' as t;
+
+$flex-basis: (
+  'properties': (
+    '-flex-basis': flex-basis
+  ),
+  'values': (
+    '-0': 0,
+    '-xsmall': 4px,
+    '-small': 8px,
+    null: 16px,
+    '-large': 24px,
+    '-xlarge': 36px,
+    '-huge': 56px,
+    '-xhuge': 80px,
+    '-enormous': 120px,
+    '-xenormous': 180px,
+    '-auto': auto,
+    '-full': 100%
+  )
+) !default;
+
+// Populate map with values
+$flex-basis-arithmetic-progress: ();
+$fb: 0;
+
+@while $fb <= (t.strip-unit(s.$global-baseline) * 5) {
+  $converted: t.rem($fb);
+  $flex-basis-arithmetic-progress: map.set(
+    $flex-basis-arithmetic-progress,
+    'values',
+    '-#{math.div($fb, t.strip-unit(s.$global-baseline))}',
+    $converted
+  );
+  $fb: $fb + t.strip-unit(s.$global-baseline);
+}
+
+$flex-basis: map.deep-merge($flex-basis, $flex-basis-arithmetic-progress);
+
+@include t.generate-percentage-classes($flex-basis, 1 2 3 4 5 6 12);
+@include t.generate-classes($flex-basis);
+@include t.generate-responsive-percentage-classes($flex-basis, 1 2 3 4 5 6 12);
+@include t.generate-responsive-classes($flex-basis);
+
+/*
+<div class="[ u-flex ][ u-space-x@desktop ]">
+  <div style="height: 100px;" class="[ u-flex-basis-xenormous@desktop ][ u-bg-color-primary ]"></div>
+  <div style="height: 100px;" class="[ u-flex-basis-1/3@desktop ][ u-bg-color-primary ]"></div>
+  <div style="height: 100px;" class="[ u-flex-basis-1/3@desktop ][ u-bg-color-primary ]"></div>
+</div>
+*/

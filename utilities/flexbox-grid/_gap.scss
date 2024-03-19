@@ -1,0 +1,37 @@
+/* ==========================================================================
+   #GAP
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$gap: (
+  'properties': (
+    '-gap': gap,
+    '-gap-col': column-gap,
+    '-gap-row': row-gap
+  ),
+  'values': (
+    '-none': 0,
+    '-xsmall': t.rem(t.spacing(xsmall)),
+    '-small': t.rem(t.spacing(small)),
+    null: t.rem(t.spacing(base)),
+    '-large': t.rem(t.spacing(large)),
+    '-xlarge': t.rem(t.spacing(xlarge)),
+    '-huge': t.rem(t.spacing(huge)),
+    '-xhuge': t.rem(t.spacing(xhuge)),
+    '-enormous': t.rem(t.spacing(enormous)),
+    '-xenormous': t.rem(t.spacing(xenormous))
+  )
+) !default;
+
+@include t.generate-classes($gap);
+@include t.generate-responsive-classes($gap);
+
+/*
+<div class="[ u-flex u-flex-column ][ u-gap-y ]">
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-enormous ][ u-order-3 ]">1</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-enormous ][ u-order-2 ]">2</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-enormous ][ u-order-1 ]">3</div>
+</div>
+*/

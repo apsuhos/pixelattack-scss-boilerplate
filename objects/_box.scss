@@ -1,0 +1,76 @@
+/* ==========================================================================
+   #BOX
+   ========================================================================== */
+
+@use '../tools/' as t;
+
+$box-xsmall-padding: t.rem(t.spacing(xsmall)) !default;
+$box-small-padding: t.rem(t.spacing(small)) !default;
+$box-padding: t.rem(t.spacing(base)) !default;
+$box-large-padding: t.rem(t.spacing(large)) !default;
+$box-xlarge-padding: t.rem(t.spacing(xlarge)) !default;
+$box-huge-padding: t.rem(t.spacing(huge)) !default;
+$box-xhuge-padding: t.rem(t.spacing(xhuge)) !default;
+$box-enormous-padding: t.rem(t.spacing(enormous)) !default;
+$box-xenormous-padding: t.rem(t.spacing(xenormous)) !default;
+
+.o-box {
+  @include t.clearfix;
+
+  display: block;
+  padding: $box-padding;
+
+  > * {
+    /* stylelint-disable-next-line max-nesting-depth */
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+/*  Size variants
+    ========================================================================== */
+
+.o-box--flush {
+  padding: 0;
+}
+
+.o-box--xsmall {
+  padding: $box-xsmall-padding;
+}
+
+.o-box--small {
+  padding: $box-small-padding;
+}
+
+.o-box--large {
+  padding: $box-large-padding;
+}
+
+.o-box--xlarge {
+  padding: $box-xlarge-padding;
+}
+
+.o-box--huge {
+  padding: $box-huge-padding;
+}
+
+.o-box--xhuge {
+  padding: $box-xhuge-padding;
+}
+
+.o-box--enormous {
+  padding: $box-enormous-padding;
+}
+
+.o-box--xenormous {
+  padding: $box-xenormous-padding;
+}
+
+/*
+
+<div class="[ o-box ]">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolores a labore, nisi similique consequuntur modi quisquam nesciunt facilis totam aut perferendis. Distinctio aperiam dolor perspiciatis necessitatibus laboriosam atque, perferendis delectus. Doloremque, repellat, delectus numquam officiis laboriosam soluta commodi, ipsa architecto vero aliquam neque saepe velit modi nemo possimus illum itaque.</p>
+</div>
+
+*/

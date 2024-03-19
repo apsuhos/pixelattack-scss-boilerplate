@@ -1,0 +1,56 @@
+/* ==========================================================================
+   #COLOR SCHEME
+   ========================================================================== */
+
+@use '../settings/' as s;
+
+/*
+ * Example usage:
+ * 
+    ::selection {
+      --selection-background-color: var(--surface-primary-dark);
+      --selection-text-color: var(--text-white);
+
+      @include dark-mode {
+        --selection-background-color: #fff;
+        --selection-text-color: #000;
+      }
+
+      background: var(--selection-background-color);
+      color: var(--selection-text-color);
+    }
+
+ * The above generates:
+ *
+    ::selection {
+      --selection-background-color: var(--surface-primary-dark);
+      --selection-text-color: var(--text-white);
+      background: var(--selection-background-color);
+      color: var(--selection-text-color);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      ::selection {
+        --selection-background-color: #fff;
+        --selection-text-color: #000;
+      }
+    }
+ *
+ *
+ */
+
+@mixin light-mode {
+  @if s.config(color-scheme) {
+    @media (prefers-color-scheme: light) {
+      @content;
+    }
+  }
+}
+
+@mixin dark-mode {
+  @if s.config(color-scheme) {
+    .dark-mode & {
+      @content;
+    }
+  }
+}

@@ -1,0 +1,72 @@
+/* ==========================================================================
+   #FONT SIZE UTIL
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../settings' as s;
+@use '../../tools/' as t;
+
+.u-text-zero {
+  font-size: 0 !important;
+}
+
+@if s.config(responsive-type) == true {
+  @each $bp-name, $bp-value in t.$mq-breakpoints {
+    @include t.mq($from: $bp-name) {
+      .u-text-zero\@#{$bp-name} {
+        font-size: 0 !important;
+      }
+    }
+  }
+}
+
+$breakpoints: ('tablet', 'desktop');
+$sizes: ('xsmall', 'small', 'base', 'large', 'xlarge');
+
+@each $size in $sizes {
+  .u-text-#{$size} {
+    @include t.font-size(
+      map.get(s.$typography, 'mobile', $size, 'font-size'),
+      $modifier: map.get(s.$typography, 'mobile', $size, 'modifier'),
+      $important: true
+    );
+  }
+}
+
+@if s.config(responsive-type) == true {
+  @each $breakpoint in $breakpoints {
+    @include t.mq($from: $breakpoint) {
+      @each $size in $sizes {
+        .u-text-#{$size} {
+          @include t.font-size(
+            map.get(s.$typography, $breakpoint, $size, 'font-size'),
+            $modifier: map.get(s.$typography, $breakpoint, $size, 'modifier'),
+            $important: true
+          );
+        }
+      }
+    }
+  }
+}
+
+@if s.config(responsive-type) == true {
+  @each $bp-name, $bp-value in t.$mq-breakpoints {
+    @include t.mq($from: $bp-name) {
+      @each $size in $sizes {
+        .u-text-#{$size}\@#{$bp-name} {
+          @include t.font-size(
+            map.get(s.$typography, $bp-name, $size, 'font-size'),
+            $modifier: map.get(s.$typography, $bp-name, $size, 'modifier'),
+            $important: true
+          );
+        }
+      }
+    }
+  }
+}
+
+/*
+<p class="[ u-text-base ]">This will naturally increase in size without explicitly assigning media queries.</p>
+<p class="[ u-text-small ]">This will naturally increase in size without explicitly assigning media queries.</p>
+<p class="[ u-text-xsmall u-text-xlarge@tablet u-text-xsmall@desktop ]">This starts as xsmall, but it is explicitly assigned the xlarge font size utility @tablet and then the xsmall @desktop</p>
+*/

@@ -1,0 +1,20 @@
+/* ==========================================================================
+   #BUTTONS
+   ========================================================================== */
+
+/* stylelint-disable-next-line selector-no-qualifying-type */
+button,
+input[type='submit'] {
+  border: 0;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: var(--global-outline-width);
+    outline-color: var(--outline-secondary-dark);
+    outline-offset: var(--global-outline-offset);
+    outline-style: var(--global-outline-style);
+  }
+}

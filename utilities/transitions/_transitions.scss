@@ -1,0 +1,48 @@
+/* ==========================================================================
+   #TRANSITIONS
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$transition: (
+  'properties': (
+    '-transition': transition
+  ),
+  'values': (
+    '-none': 'none',
+    '-all': 'all',
+    '-color': 'color',
+    '-background-color': 'background-color',
+    '-border-color': 'border-color',
+    '-text-decoration-color': 'text-decoration-color',
+    '-fill': 'fill',
+    '-stroke': 'stroke',
+    '-colors': 'color, background-color, border-color, text-decoration-color, fill, stroke',
+    '-opacity': 'opacity',
+    '-shadow': 'box-shadow',
+    '-scale': 'scale',
+    '-rotate': 'rotate',
+    '-translate': 'translate'
+  )
+) !default;
+
+@include t.generate-transition-classes($transition);
+@include t.generate-responsive-transition-classes($transition);
+
+/*
+<div class="
+    [ u-padding-large ]
+    [ u-bg-color-neutral-white ]
+    [ u-border-style-solid u-border u-border-primary ]
+    [ u-color-primary ]
+    [ u-transition-all ]
+    [ hover:u-border-secondary-020 ]
+    [ hover:u-color-secondary-010 ]
+    [ hover:u-bg-color-neutral-dark ]
+    [ hover:u-scale-105@desktop ]
+    [ hover:-u-rotate-3@desktop ]">
+    Lorem ipsum dolor sit amet!
+</div>
+<div style="height: 200px; width: 200px;" class="[ u-shadow hover:u-shadow-large u-opacity-20 hover:u-opacity-100 u-transition-all ][ u-bg-color-neutral-grey-010 ]"></div>
+*/

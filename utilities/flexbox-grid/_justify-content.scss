@@ -1,0 +1,30 @@
+/* ==========================================================================
+   #JUSTIFY CONTENT
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$justify-content: (
+  'properties': (
+    '-justify': justify-content
+  ),
+  'values': (
+    '-start': flex-start,
+    '-center': center,
+    '-end': flex-end,
+    '-between': space-between,
+    '-around': space-around
+  )
+) !default;
+
+@include t.generate-classes($justify-content);
+@include t.generate-responsive-classes($justify-content);
+
+/*
+<div class="[ u-flex u-justify-center u-justify-end@desktop ][ u-gap-x ]">
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">1</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">2</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">3</div>
+</div>
+*/

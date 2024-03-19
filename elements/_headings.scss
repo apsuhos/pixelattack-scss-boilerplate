@@ -1,0 +1,84 @@
+/* ===========================================================================
+   #HEADINGS
+   =========================================================================== */
+
+@use 'sass:map';
+@use '../tools/' as t;
+@use '../settings/' as s;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  --headings-color: var(--text-primary);
+
+  color: var(--headings-color);
+  font-family: var(--global-system-fonts);
+  /* stylelint-enable font-family-no-missing-generic-family-keyword */
+  font-style: normal;
+  font-weight: 700;
+  /* stylelint-disable font-family-no-missing-generic-family-keyword */
+  @if s.config(custom-fonts) {
+    font-family: CeraPro;
+  }
+}
+
+$mobile-headings: map.get(s.$headings, 'mobile');
+$tablet-headings: map.get(s.$headings, 'tablet');
+$desktop-headings: map.get(s.$headings, 'desktop');
+
+@each $heading, $properties in $mobile-headings {
+  $heading-font-size: map.get($properties, 'font-size');
+  $heading-line-height: map.get($properties, 'line-height');
+  $heading-modifier: map.get($properties, 'modifier');
+  $heading-important: map.get($properties, 'important');
+
+  #{$heading} {
+    @include t.font-size(
+      $heading-font-size,
+      $line-height: $heading-line-height,
+      $modifier: $heading-modifier,
+      $important: $heading-important
+    );
+  }
+}
+
+@if s.config(responsive-type) == true {
+  @each $heading, $properties in $tablet-headings {
+    $heading-font-size: map.get($properties, 'font-size');
+    $heading-line-height: map.get($properties, 'line-height');
+    $heading-modifier: map.get($properties, 'modifier');
+    $heading-important: map.get($properties, 'important');
+
+    @include t.mq($from: tablet) {
+      #{$heading} {
+        @include t.font-size(
+          $heading-font-size,
+          $line-height: $heading-line-height,
+          $modifier: $heading-modifier,
+          $important: $heading-important
+        );
+      }
+    }
+  }
+
+  @each $heading, $properties in $desktop-headings {
+    $heading-font-size: map.get($properties, 'font-size');
+    $heading-line-height: map.get($properties, 'line-height');
+    $heading-modifier: map.get($properties, 'modifier');
+    $heading-important: map.get($properties, 'important');
+
+    @include t.mq($from: desktop) {
+      #{$heading} {
+        @include t.font-size(
+          $heading-font-size,
+          $line-height: $heading-line-height,
+          $modifier: $heading-modifier,
+          $important: $heading-important
+        );
+      }
+    }
+  }
+}

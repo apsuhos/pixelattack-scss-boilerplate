@@ -1,0 +1,45 @@
+/* ==========================================================================
+   #COLORS
+   ========================================================================== */
+
+$theme-colors: (
+  'blue': (
+    'primary-light': hsl(215deg 67% 96%),
+    'primary': hsl(217deg 75% 25%),
+    'primary-dark': hsl(218deg 48% 16%),
+    'secondary-light': hsl(0deg 50% 96%),
+    'secondary': hsl(335deg 81% 38%),
+    'secondary-dark': hsl(335deg 77% 31%),
+    'secondary-alt': hsl(335deg 88% 84%),
+    'secondary-alt-dark': hsl(335deg 87% 76%)
+  ),
+  'purple': (
+    'primary-light': hsl(270deg 50% 96%),
+    'primary': hsl(270deg 56% 29%),
+    'primary-dark': hsl(270deg 49% 22%),
+    'secondary-light': hsl(0deg 50% 96%),
+    'secondary': hsl(335deg 81% 38%),
+    'secondary-dark': hsl(335deg 77% 31%),
+    'secondary-alt': hsl(335deg 88% 84%),
+    'secondary-alt-dark': hsl(335deg 87% 76%)
+  )
+) !default;
+$neutral-colors: (
+  'white': hsl(0deg 0% 100%),
+  'grey-light': hsl(216deg 33% 94%),
+  'grey-dark': hsl(218deg 11% 39%)
+) !default;
+$context-colors: (
+  'success-010': hsl(144deg 71% 93%),
+  'success-020': hsl(144deg 84% 76%),
+  'success-030': hsl(144deg 91% 22%),
+  'error-010': hsl(0deg 50% 96%),
+  'error-020': hsl(0deg 79% 91%),
+  'error-030': hsl(0deg 82% 31%),
+  'info-010': hsl(215deg 67% 96%),
+  'info-020': hsl(217deg 88% 90%),
+  'info-030': hsl(217deg 80% 33%),
+  'warning-010': hsl(33deg 79% 95%),
+  'warning-020': hsl(33deg 88% 83%),
+  'warning-030': hsl(33deg 87% 22%)
+) !default;

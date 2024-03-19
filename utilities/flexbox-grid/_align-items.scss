@@ -1,0 +1,30 @@
+/* ==========================================================================
+   #ALIGN ITEMS
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$align-items: (
+  'properties': (
+    '-items': align-items
+  ),
+  'values': (
+    '-start': flex-start,
+    '-end': flex-end,
+    '-center': center,
+    '-baseline': baseline,
+    '-stretch': stretch
+  )
+) !default;
+
+@include t.generate-classes($align-items);
+@include t.generate-responsive-classes($align-items);
+
+/*
+<div class="[ u-flex u-items-center u-items-end@desktop ][ u-gap-x ]">
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">1</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-xlarge ]">2</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-small ]">3</div>
+</div>
+*/

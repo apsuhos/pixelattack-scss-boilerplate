@@ -1,0 +1,24 @@
+/* ==========================================================================
+   #Z-INDEX
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$z-index: (
+  'properties': (
+    '-z-index': z-index
+  ),
+  'values': (
+    '-0': 0,
+    '-10': 10,
+    '-20': 20,
+    '-30': 30,
+    '-40': 40,
+    '-50': 50,
+    '-auto': auto
+  )
+) !default;
+
+@include t.generate-classes($z-index);
+@include t.generate-responsive-classes($z-index);

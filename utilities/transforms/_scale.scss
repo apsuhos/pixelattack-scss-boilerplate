@@ -1,0 +1,50 @@
+/* ==========================================================================
+   #SCALE
+   ========================================================================== */
+
+@use '../../tools/' as t;
+
+$scale: (
+  'properties': (
+    '-scale': scale,
+    '-scale-x': scale,
+    '-scale-y': scale
+  ),
+  'values': (
+    '-95': 0.95,
+    '-97': 0.97,
+    '-98': 0.98,
+    '-99': 0.99,
+    '-100': 1,
+    '-101': 1.01,
+    '-102': 1.02,
+    '-103': 1.03,
+    '-105': 1.05,
+    '-125': 1.25
+  )
+) !default;
+
+@include t.generate-scale-classes($scale);
+@include t.generate-hover-scale-classes($scale);
+@include t.generate-responsive-scale-classes($scale);
+@include t.generate-responsive-hover-scale-classes($scale);
+
+/*
+<a href="#" class="[ c-btn c-btn--primary ]">normal</a>
+<br>
+<a href="#" class="[ c-btn c-btn--primary ][ u-scale-125 ]">u-scale-125</a>
+<a href="#" class="[ c-btn c-btn--primary ][ u-scale-x-125 ]">u-scale-x-125</a>
+<a href="#" class="[ c-btn c-btn--primary ][ u-scale-y-125 ]">u-scale-y-125</a>
+<br>
+<a href="#" class="[ c-btn c-btn--primary ][ u-scale-125@desktop ]">u-scale-125@desktop</a>
+<a href="#" class="[ c-btn c-btn--primary ][ u-scale-x-125@desktop ]">u-scale-x-125@desktop</a>
+<a href="#" class="[ c-btn c-btn--primary ][ u-scale-y-125@desktop ]">u-scale-y-125@desktop</a>
+<br>
+<a href="#" class="[ c-btn c-btn--primary ][ hover:u-scale-125 ]">hover:u-scale-125</a>
+<a href="#" class="[ c-btn c-btn--primary ][ hover:u-scale-x-125 ]">hover:u-scale-x-125</a>
+<a href="#" class="[ c-btn c-btn--primary ][ hover:u-scale-y-125 ]">hover:u-scale-y-125</a>
+<br>
+<a href="#" class="[ c-btn c-btn--primary ][ hover:u-scale-125@desktop ]">hover:u-scale-125@desktop</a>
+<a href="#" class="[ c-btn c-btn--primary ][ hover:u-scale-x-125@desktop ]">hover:u-scale-x-125@desktop</a>
+<a href="#" class="[ c-btn c-btn--primary ][ hover:u-scale-y-125@desktop ]">hover:u-scale-y-125@desktop</a>
+*/

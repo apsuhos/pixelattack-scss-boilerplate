@@ -1,0 +1,31 @@
+/* ==========================================================================
+   #ALIGN SELF
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$align-self: (
+  'properties': (
+    '-self': align-self
+  ),
+  'values': (
+    '-auto': auto,
+    '-start': flex-start,
+    '-end': flex-end,
+    '-center': center,
+    '-stretch': stretch,
+    '-baseline': baseline
+  )
+) !default;
+
+@include t.generate-classes($align-self);
+@include t.generate-responsive-classes($align-self);
+
+/*
+<div style="height: 300px; width: 300px;" class="[ u-flex u-content-center ][ u-gap-x ] [ u-bg-color-neutral-grey-010 ]">
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">1</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">2</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-small ][ u-self-start ]">3</div>
+</div>
+*/

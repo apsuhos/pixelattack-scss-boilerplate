@@ -6,6 +6,8 @@
   ],
   "rules": {
     "selector-class-pattern": null,
-    "max-line-length": null
+    "max-line-length": null,
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": null
   }
 }

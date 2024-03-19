@@ -1,0 +1,35 @@
+/* ==========================================================================
+   #OPACITY
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$opacity: (
+  'properties': (
+    '-opacity': opacity
+  ),
+  'values': (
+    '-0': 0,
+    '-10': 0.1,
+    '-20': 0.2,
+    '-30': 0.3,
+    '-40': 0.4,
+    '-50': 0.5,
+    '-60': 0.6,
+    '-70': 0.7,
+    '-80': 0.8,
+    '-90': 0.9,
+    '-100': 1
+  )
+) !default;
+
+@include t.generate-classes($opacity);
+@include t.generate-responsive-classes($opacity);
+@include t.generate-hover-classes($opacity);
+@include t.generate-responsive-hover-classes($opacity);
+
+/*
+<div style="height: 200px; width: 200px;" class="[ u-opacity-20 hover:u-opacity-50 ][ u-bg-color-neutral-grey-010 ]"></div>
+<div style="height: 200px; width: 200px;" class="[ u-shadow hover:u-shadow-large u-opacity-20 hover:u-opacity-100 u-transition-all ][ u-bg-color-neutral-grey-010 ]"></div>
+*/

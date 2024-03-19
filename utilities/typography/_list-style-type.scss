@@ -1,0 +1,22 @@
+/* ==========================================================================
+   #LIST STYLE TYPE
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$list-style-type: (
+  'properties': (
+    '-list': list-style-type
+  ),
+  'values': (
+    '-none': none,
+    '-disc': disc,
+    '-decimal': decimal,
+    '-square': square,
+    '-circle': circle
+  )
+) !default;
+
+@include t.generate-classes($list-style-type);
+@include t.generate-responsive-classes($list-style-type);

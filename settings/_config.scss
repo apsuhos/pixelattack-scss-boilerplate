@@ -1,0 +1,24 @@
+/*  ==========================================================================
+    #CONFIG
+    ========================================================================== */
+
+@use 'sass:map';
+
+$config: (
+  env: prod,
+  responsive-type: false,
+  themes: false,
+  multilingual: false,
+  color-scheme: false,
+  custom-fonts: false
+) !default;
+
+@function config($key) {
+  @return map.get($config, $key);
+}
+
+@if config(env) == prod {
+  body::before {
+    display: none;
+  }
+}

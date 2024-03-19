@@ -1,0 +1,21 @@
+/* ==========================================================================
+   #TEXT ALIGN
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$text-align: (
+  'properties': (
+    '-text': text-align
+  ),
+  'values': (
+    '-left': left,
+    '-right': right,
+    '-center': center,
+    '-justify': justify
+  )
+) !default;
+
+@include t.generate-classes($text-align);
+@include t.generate-responsive-classes($text-align);

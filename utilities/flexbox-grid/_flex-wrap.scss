@@ -1,0 +1,31 @@
+/* ==========================================================================
+   #FLEX WRAP
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$flex-wrap: (
+  'properties': (
+    '-flex': flex-wrap
+  ),
+  'values': (
+    '-wrap': wrap,
+    '-nowrap': nowrap,
+    '-wrap-reverse': wrap-reverse
+  )
+) !default;
+
+@include t.generate-classes($flex-wrap);
+@include t.generate-responsive-classes($flex-wrap);
+
+/*
+<div class="[ u-flex u-flex-wrap ][ u-gap-x u-gap-y ]">
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">1</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">2</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">3</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">4</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">5</div>
+  <div class="[ u-bg-color-primary u-color-neutral-white u-padding-large ]">6</div>
+</div>
+*/

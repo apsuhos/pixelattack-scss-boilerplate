@@ -1,0 +1,77 @@
+/* ==========================================================================
+   #CONTAINER
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/' as t;
+
+// Restricts content to the content size of the: desktop
+// The margins are set at spacing(large). For default baseline it is 24px (4px*6)
+// For default breakpoints it is 1016px (1064 - 24 - 24) - This is the default object
+.o-container {
+  @include t.clearfix;
+
+  margin-inline: auto;
+  max-width: calc(map.get(t.$mq-breakpoints, desktop) - t.spacing(large) * 2);
+}
+
+// Restricts content to the content size of the: tablet
+// The margins are set at spacing(base). For default baseline it is 16px (4px*4)
+// For default breakpoints it is 672px (704 - 16 - 16)
+.o-container--xsmall {
+  max-width: calc(map.get(t.$mq-breakpoints, tablet) - t.spacing(base) * 2);
+}
+
+// Restricts content to the content size of the: l-tablet
+// The margins are set at spacing(large). For default baseline it is 24px (4px*6)
+// For default breakpoints it is 844px (892 - 24 - 24)
+.o-container--small {
+  max-width: calc(map.get(t.$mq-breakpoints, l-tablet) - t.spacing(large) * 2);
+}
+
+// Restricts content to the content size of the: l-desktop
+// The margins are set at spacing(xlarge). For default baseline it is 36px (4px*9)
+// For default breakpoints it is 1188px (1260 - 36 - 36)
+.o-container--large {
+  max-width: calc(map.get(t.$mq-breakpoints, l-desktop) - t.spacing(xlarge) * 2);
+}
+
+// Restricts content to the content size of the: wide
+// The margins are set at spacing(xlarge). For default baseline it is 36px (4px*9)
+// For default breakpoints it is 1360px (1432 - 36 - 36)
+.o-container--xlarge {
+  max-width: calc(map.get(t.$mq-breakpoints, wide) - t.spacing(xlarge) * 2);
+}
+
+// Restricts content to the content size of the: l-wide
+// The margins are set at spacing(xlarge). For default baseline it is 36px (4px*9)
+// For default breakpoints it is 1532px (1604 - 36 - 36)
+.o-container--full {
+  max-width: calc(map.get(t.$mq-breakpoints, l-wide) - t.spacing(xlarge) * 2);
+}
+
+/*
+<div class="[ u-text-center ]">
+  <h2>Imagine this is a blog post heading</h2>
+  <p class="[ u-text-large ]">We need to restrict the content to a narrow column for readbility. We extend the container to small. This means it will be the content width of the l-tablet @ 892px.</p>
+</div>
+<div class="[ o-container o-container--small ]">
+  <p>Tolor sit amet consectetur adipisicing elit. Ab ullam iste explicabo recusandae, excepturi velit consequatur eveniet blanditiis culpa molestiae aspernatur, architecto maiores dolorem. Illo ab sit aspernatur veniam deserunt odio vitae nemo unde obcaecati mollitia. Optio, voluptate! Inventore amet porro soluta est deserunt dignissimos repellendus id deleniti voluptatum, culpa earum veniam architecto mollitia quasi perspiciatis nihil harum maiores repudiandae unde accusantium quidem! Minima adipisci culpa commodi vero, provident, ullam expedita totam molestias in laboriosam voluptates, earum repudiandae autem odio incidunt quasi inventore! Incidunt tempora nisi beatae similique quod a labore cumque accusamus, provident ut et nobis mollitia dolores sequi voluptatum iure magni illum, at eaque harum commodi. Culpa modi maxime sapiente earum pariatur dignissimos, quas repellat voluptatum maiores tempore aperiam nisi sit eaque distinctio eligendi veritatis. Repellat magni asperiores eos exercitationem corrupti ut blanditiis harum totam fugit beatae earum eaque aspernatur ex aliquid odit nihil, reiciendis vitae! Et soluta cupiditate, deserunt in nihil est eligendi maxime. Ad, maiores dolor culpa perferendis tenetur vitae! Quibusdam aspernatur itaque, aliquid eum quas laboriosam doloremque doloribus ex saepe voluptatibus. Repellendus quam quos molestiae ratione at sunt doloremque suscipit ipsa voluptatibus ut, cumque accusamus maiores omnis perspiciatis beatae totam veniam recusandae. Ea consectetur aliquid esse illum quasi nemo commodi alias. Dolor unde consequuntur perferendis? Facere deserunt dolorem nam quos, laboriosam eius voluptatibus qui adipisci vel, labore quibusdam sapiente a mollitia modi perferendis hic natus assumenda at voluptates necessitatibus atque! Nesciunt neque aspernatur suscipit exercitationem fugit deleniti minima quasi ab dolores temporibus facilis, amet odio nisi beatae excepturi distinctio blanditiis sed corporis, quisquam in sint ducimus molestiae. Inventore aspernatur cupiditate eveniet perferendis similique. Minus, inventore. Dicta repellendus fugiat voluptatem atque amet facere vero a natus officiis sequi perspiciatis magni nulla, non numquam id earum! Itaque, accusantium quos repudiandae excepturi, expedita quas assumenda commodi corrupti, suscipit facilis quo. Illum dolore fugiat non dignissimos esse. Aliquid, magni, exercitationem ratione reiciendis unde sunt consectetur ducimus distinctio cumque enim repellendus doloribus illum excepturi molestias! Nobis laboriosam officiis earum possimus sint? Ipsam blanditiis quia nemo similique ipsum laboriosam minus quibusdam. Consequuntur fugiat accusantium distinctio necessitatibus sequi mollitia, at nihil animi expedita ut non laboriosam beatae dolor suscipit similique culpa iste? Quisquam repudiandae esse expedita est maxime ipsa, magnam aspernatur amet dolorum ad recusandae necessitatibus, voluptatibus sit obcaecati. Recusandae quibusdam doloremque voluptas rem sint, quod doloribus maxime vel non a sequi impedit voluptates optio. Praesentium doloremque nisi excepturi laudantium quasi officia, odit illo iusto nostrum tempora porro quas vel delectus voluptatem nemo dolores at veritatis inventore alias quisquam laboriosam consequatur distinctio labore nihil. Eaque quia optio vero totam ea nesciunt fugiat consequuntur doloribus adipisci libero fugit itaque in illo unde iusto accusantium nihil consequatur dolor modi numquam, dolorum nemo incidunt ullam. Harum eligendi nesciunt delectus cupiditate tempore necessitatibus inventore maxime quaerat nisi, earum aliquid odio soluta laboriosam dolores pariatur odit esse placeat fuga quidem. Voluptatem quis sint sunt aliquam soluta, cum modi porro magnam fugiat aut ex dicta tempore enim quod cupiditate ducimus. Quis tempora vitae possimus in quidem eius et.</p>
+</div>
+
+<div class="[ o-wrapper ][ u-padding-horizontal-small u-padding-horizontal@l-mobile u-padding-horizontal-large@l-tablet u-padding-horizontal-xlarge@l-desktop ]">
+  <div class="[ o-container o-container--xlarge ]">
+    <div class="[ u-grid u-grid-cols-2@tablet u-gap-small u-gap@desktop ]">
+      <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+        <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">1</div>
+      </div>
+      <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+        <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">2</div>
+      </div>
+      <div class="[ u-col-span-full@tablet u-col-span-1@desktop ][ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+        <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">3</div>
+      </div>
+    </div>
+  </div>
+</div>
+*/

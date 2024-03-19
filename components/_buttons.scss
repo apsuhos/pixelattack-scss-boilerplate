@@ -1,0 +1,107 @@
+/* ==========================================================================
+   #BUTTONS
+   ========================================================================== */
+
+@use '../tools' as t;
+
+/* stylelint-disable max-nesting-depth */
+
+.c-btn {
+  --btn-block-padding: #{t.rem(t.spacing(base))};
+  --btn-inline-padding: #{t.rem(t.spacing(base))};
+  --btn-radius: var(--global-radius);
+  --btn-transition-timing-function: var(--global-transition-timing-function);
+  --btn-transition-duration: var(--global-transition-duration);
+}
+
+.c-btn--primary {
+  --btn-background: var(--surface-secondary);
+  --btn-text-color: var(--text-white);
+
+  @include t.dark-mode {
+    --btn-text-color: var(--primary-dark);
+  }
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    --btn-background: var(--surface-secondary-dark);
+  }
+
+  &:focus-visible {
+    --btn-outline-color: var(--outline-secondary-dark);
+  }
+}
+
+.c-btn--ghost {
+  --btn-background: transparent;
+  --btn-border-width: var(--global-border-width);
+
+  &:hover,
+  &:active,
+  &:focus-visible {
+    --btn-background: transparent;
+  }
+
+  &.c-btn--primary {
+    --btn-text-color: var(--text-secondary);
+
+    &:hover,
+    &:active,
+    &:focus-visible {
+      --btn-text-color: var(--text-secondary-dark);
+    }
+  }
+}
+
+.c-btn--small {
+  --btn-block-padding: #{t.rem(t.spacing(small))};
+  --btn-inline-padding: #{t.rem(t.spacing(small))};
+}
+
+.c-btn--large {
+  --btn-block-padding: #{t.rem(t.spacing(large))};
+  --btn-inline-padding: #{t.rem(t.spacing(xlarge))};
+}
+
+/* stylelint-disable no-descending-specificity */
+/* stylelint-disable no-duplicate-selectors */
+
+.c-btn {
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  display: inline-block;
+  font: inherit;
+  font-weight: bold;
+  margin: 0;
+  padding-block: var(--btn-block-padding);
+  padding-inline: var(--btn-inline-padding);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition-duration: var(--btn-transition-duration);
+  transition-property: background-color, color, border-color;
+  transition-timing-function: var(--btn-transition-timing-function);
+  vertical-align: middle;
+}
+
+.c-btn--primary {
+  background-color: var(--btn-background);
+  color: var(--btn-text-color);
+}
+
+.c-btn--ghost {
+  border-color: var(--global-border-color);
+  border-style: var(--global-border-style);
+  border-width: var(--btn-border-width);
+  padding-block: calc(var(--btn-block-padding) - var(--btn-border-width));
+  padding-inline: calc(var(--btn-inline-padding) - var(--btn-border-width));
+}
+
+.c-btn--small {
+  @include t.typeSize(xsmall);
+}
+
+.c-btn--large {
+  @include t.typeSize(large);
+}

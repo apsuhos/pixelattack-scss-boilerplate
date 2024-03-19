@@ -1,0 +1,32 @@
+/* ==========================================================================
+   #BOX SHADOW
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$box-shadow: (
+  'properties': (
+    '-shadow': box-shadow
+  ),
+  'values': (
+    '-xsmall': '0 1px 2px 0 rgb(0 0 0 / 0.05)',
+    '-small': '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+    null: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+    '-large': '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)',
+    '-xlarge': '0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)',
+    '-huge': '0 25px 50px -12px rgb(0 0 0 / 0.25)',
+    '-inner': 'inset 0 2px 4px 0 rgb(0 0 0 / 0.05)',
+    '-none': '0 0 #0000'
+  )
+) !default;
+
+@include t.generate-classes($box-shadow);
+@include t.generate-hover-classes($box-shadow);
+@include t.generate-responsive-classes($box-shadow);
+@include t.generate-responsive-hover-classes($box-shadow);
+
+/*
+<div style="height: 200px; width: 200px;" class="[ u-shadow-xsmall hover:u-shadow-small ][ u-bg-color-neutral-grey-010 ]"></div>
+<div style="height: 200px; width: 200px;" class="[ u-shadow hover:u-shadow-large u-opacity-20 hover:u-opacity-100 u-transition-all ][ u-bg-color-neutral-grey-010 ]"></div>
+*/

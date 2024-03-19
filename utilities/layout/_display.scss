@@ -1,0 +1,29 @@
+/* ==========================================================================
+   #DISPLAY
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$display: (
+  'properties': (
+    null: display
+  ),
+  'values': (
+    '-hidden': none,
+    '-block': block,
+    '-flow-root': flow-root,
+    '-inline-block': inline-block,
+    '-inline': inline,
+    '-flex': flex,
+    '-inline-flex': inline-flex,
+    '-grid': grid,
+    '-inline-grid': inline-grid,
+    '-table': table,
+    '-table-caption': table-caption,
+    '-table-cell': table-cell
+  )
+) !default;
+
+@include t.generate-classes($display);
+@include t.generate-responsive-classes($display);

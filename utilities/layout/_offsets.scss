@@ -1,0 +1,23 @@
+/* ==========================================================================
+   #OFFSETS
+   ========================================================================== */
+
+@use 'sass:math';
+@use '../../tools/' as t;
+
+@include t.generate-offsets(1 2 3 4 5 6 7 8 9 10 11 12);
+@include t.generate-responsive-offsets(1 2 3 4 5 6 7 8 9 10 11 12);
+
+/*
+<div class="[ o-container o-container--full ]">
+  <div class="[ u-bg-color-secondary-light ]">
+    <div class="[ o-block o-block--small ]">
+      <div class="[ o-grid o-grid--xlarge ]">
+        <div class="[ o-grid__cell ][ u-width-6/12 ][ u-push-6/12 ]">
+          <p class="[ u-bg-color-primary ][ u-color-white ]">Hello world</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+*/

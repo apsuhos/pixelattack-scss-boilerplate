@@ -1,0 +1,56 @@
+/*  ===========================================================================
+    #LINKS
+=============================================================================== */
+
+@use '../tools/' as t;
+
+a {
+  --link-color: var(--text-secondary);
+  --link-text-decoration-color: var(--global-text-decoration-color);
+  --link-text-decoration-line: var(--global-text-decoration-line);
+  --link-text-decoration-thickness: var(--global-text-decoration-thickness);
+  --link-text-underline-offset: var(--global-text-underline-offset);
+  --link-transition-duration: var(--global-transition-duration);
+  --link-transition-timing-function: var(--global-transition-timing-function);
+
+  &:hover,
+  &:focus-visible {
+    --link-color: var(--text-secondary-dark);
+    --link-text-decoration-thickness: #{t.rem(2px)};
+  }
+
+  &:focus-visible {
+    --link-text-decoration-line: none;
+    --link-outline-color: var(--outline-secondary-dark);
+    --link-outline-style: var(--global-outline-style);
+    --link-outline-width: var(--global-outline-width);
+    --link-outline-offset: var(--global-outline-offset);
+  }
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: var(--link-text-decoration-line);
+  text-decoration-color: var(--link-text-decoration-color);
+  text-decoration-thickness: var(--link-text-decoration-thickness);
+  text-underline-offset: var(--link-text-underline-offset);
+  transition-duration: var(--link-transition-duration);
+  transition-property: text-decoration, color, text-decoration-color;
+  transition-timing-function: var(--link-transition-timing-function);
+
+  &:hover,
+  &:focus-visible {
+    text-decoration-thickness: var(--link-text-decoration-thickness);
+  }
+
+  &:focus-visible {
+    outline: var(--link-outline-color) var(--link-outline-style) var(--link-outline-width);
+    outline-offset: var(--link-outline-offset);
+  }
+}
+
+@media (prefers-reduced-motion) {
+  a {
+    transition-property: none;
+  }
+}

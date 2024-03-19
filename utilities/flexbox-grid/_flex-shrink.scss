@@ -1,0 +1,27 @@
+/* ==========================================================================
+   #FLEX SHRINK
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$flex-shrink: (
+  'properties': (
+    '-flex-shrink': flex-shrink
+  ),
+  'values': (
+    '-1': 1,
+    '-0': 0
+  )
+) !default;
+
+@include t.generate-classes($flex-shrink);
+@include t.generate-responsive-classes($flex-shrink);
+
+/*
+<div class="[ u-flex ][ u-space-x ]">
+  <div style="height: 100px; width: 100%;" class="[ u-flex-shrink-1 ][ u-bg-color-primary ]"></div>
+  <div style="height: 100px; width: 200px;" class="[ u-flex-shrink-0 ][ u-bg-color-primary ]"></div>
+  <div style="height: 100px; width: 100%;" class="[ u-flex-shrink-1 ][ u-bg-color-primary ]"></div>
+</div>
+*/

@@ -1,0 +1,46 @@
+/* ==========================================================================
+   #GRID COLUMNS START END
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../../tools/' as t;
+
+$grid-columns-start-end: (
+  'properties': (
+    '-col-start': grid-column-start,
+    '-col-end': grid-column-end
+  ),
+  'values': (
+    '-1': 1,
+    '-2': 2,
+    '-3': 3,
+    '-4': 4,
+    '-5': 5,
+    '-6': 6,
+    '-7': 7,
+    '-8': 8,
+    '-9': 9,
+    '-10': 10,
+    '-11': 11,
+    '-12': 12,
+    '-13': 13,
+    '-auto': auto
+  )
+) !default;
+
+@include t.generate-classes($grid-columns-start-end);
+@include t.generate-responsive-classes($grid-columns-start-end);
+
+/*
+<div class="[ u-grid u-grid-cols-1 u-grid-cols-2@tablet u-gap ]">
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">1</div>
+  </div>
+  <div class="[ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">2</div>
+  </div>
+  <div class="[ u-col-start-2 ][ u-bg-color-primary ][ u-color-white ][ u-flex u-justify-center u-items-center ][ u-padding ]">
+    <div class="[ u-height-50 u-width-50 ][ u-flex u-justify-center u-items-center ][ u-color-primary u-bg-color-white ]">3</div>
+  </div>
+</div>
+*/

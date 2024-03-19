@@ -1,0 +1,177 @@
+/* ==========================================================================
+   #FORM
+   ========================================================================== */
+
+@use 'sass:map';
+@use '../tools/' as t;
+@use '../settings/' as s;
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 32 32'%3E%3Cpath fill='%2359616e' d='m26.708 12.708-10 10a1.001 1.001 0 0 1-1.415 0l-10-10a1 1 0 0 1 1.415-1.415l9.293 9.293 9.292-9.293a1 1 0 0 1 1.415 1.415Z'/%3E%3C/svg%3E");
+  background-position: right t.rem(t.spacing(small)) center;
+  background-repeat: no-repeat;
+  background-size: 1.125rem;
+  padding-inline-end: t.rem(t.spacing(large));
+}
+
+[type='text'],
+[type='email'],
+[type='url'],
+[type='password'],
+[type='number'],
+[type='date'],
+[type='datetime-local'],
+[type='month'],
+[type='search'],
+[type='tel'],
+[type='time'],
+[type='week'],
+[multiple],
+textarea,
+select {
+  --field-background-color: var(--surface-base);
+  --field-border-color: var(--border-grey);
+
+  &:focus {
+    --field-border-color: var(--border-secondary-dark);
+    --filed-outline-color: var(--outline-secondary-dark);
+  }
+
+  /* stylelint-disable-next-line order/order */
+  appearance: none;
+  background-color: var(--field-background-color);
+  border-color: var(--field-border-color);
+  border-radius: var(--global-radius);
+  border-style: var(--global-border-style);
+  border-width: var(--global-border-width);
+  color: inherit;
+  font-weight: inherit;
+  padding: t.rem(t.spacing(small));
+
+  /* stylelint-disable-next-line no-duplicate-selectors */
+  &:focus {
+    outline: var(--filed-outline-color) var(--global-outline-style) var(--global-outline-width);
+    outline-offset: var(--global-outline-offset);
+  }
+}
+
+input,
+textarea {
+  &::placeholder {
+    color: var(--text-grey);
+    opacity: 1;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+[type='checkbox'],
+[type='radio'] {
+  --option-field-background-color: var(--surface-base);
+  --option-field-border-color: var(--border-grey);
+
+  &:focus {
+    --option-field-border-color: var(--border-secondary-dark);
+    --option-field-outline-color: var(--outline-secondary-dark);
+  }
+
+  /* stylelint-disable-next-line order/order */
+  appearance: none;
+  background-color: var(--option-field-background-color);
+  border-color: var(--option-field-border-color);
+  border-style: var(--global-border-style);
+  border-width: var(--global-border-width);
+  color: inherit;
+  display: inline-block;
+  flex-shrink: 0;
+  height: t.rem(t.spacing(base));
+  user-select: none;
+  vertical-align: middle;
+  width: t.rem(t.spacing(base));
+
+  &:focus {
+    outline: var(--option-field-outline-color) var(--global-outline-style)
+      var(--global-outline-width);
+    outline-offset: var(--global-outline-offset);
+  }
+
+  &:checked {
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: transparent;
+  }
+}
+
+[type='checkbox'] {
+  border-radius: 0;
+
+  &:checked {
+    --option-field-background-color: var(--surface-secondary-dark);
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 32 32'%3E%3Cpath fill='%23fff' d='m28.708 9.708-16 16a1.001 1.001 0 0 1-1.415 0l-7-7a1 1 0 0 1 1.415-1.415l6.293 6.293L27.293 8.293a1 1 0 1 1 1.415 1.415Z'/%3E%3C/svg%3E");
+    background-size: 100% 100%;
+  }
+}
+
+[type='radio'] {
+  border-radius: 100%;
+
+  &:checked {
+    --option-field-background-color: var(--surface-secondary-dark);
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23fff'/%3E%3C/svg%3E");
+    background-size: 75% 75%;
+  }
+}
+
+/*
+
+<div class="[ u-space-y-xsmall ]">
+  <label for="firstname" class="[ u-block ]">First name</label>
+  <input type="text" id="firstname" class="[ u-width-50 ]">
+</div>
+
+<br>
+
+<div class="u-space-y-small">
+  <select class="[ u-block ][ u-width-50 ]">
+    <option>Corporate event</option>
+    <option>Wedding</option>
+    <option>Birthday</option>
+    <option>Other</option>
+  </select>
+</div>
+
+<br>
+
+<div class="[ u-flex u-space-x-small u-items-center ]">
+  <input id="checkbox" type="checkbox">
+  <label for="checkbox">Join our newsletter</label>
+</div>
+
+<br>
+
+<fieldset>
+
+  <legend class="[ u-margin-bottom-small ]">Subscription method</legend>
+
+  <div class="[ u-flex u-flex-column u-gap-row-small ][ u-text-small ]">
+    <div class="[ u-flex u-gap-col-xsmall ]">
+      <input type="radio" id="weekly" name="subscription">
+      <label for="weekly">Weekly</label>
+    </div>
+    <div class="[ u-flex u-gap-col-xsmall ]">
+      <input type="radio" id="monthly" name="subscription">
+      <label for="monthly">Monthly</label>
+    </div>
+    <div class="[ u-flex u-gap-col-xsmall ]">
+      <input type="radio" id="yearly" name="subscription">
+      <label for="yearly">Yearly</label>
+    </div>
+  </div>
+
+</fieldset>
+
+*/
